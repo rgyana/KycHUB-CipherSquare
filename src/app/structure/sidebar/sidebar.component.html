@@ -1,0 +1,139 @@
+<!-- <div class="dashboard-nav scrollbar"> -->
+
+  <!-- <div class="nav-logo d-flex justify-content-center">
+    <a class="brand-logo"><span><img [src]="brandLogo ? brandLogo : localLogo"></span></a>
+  </div> -->
+
+
+  <!-- <nav class="dashboard-nav-list">
+    <div class="dashboard-nav-dropdown " *ngFor="let item of sidemenuData | keyvalue: originalOrder;let i= index"
+      [ngClass]="(geturlPoints.mainmenu  ==  returnTitle(item.value) ) ? 'show-menu' : ''"
+      (click)="geturlPoints.mainmenu  !=  returnTitle(item.value)?showtoggle(returnTitle(item.value)):geturlPoints.mainmenu = null">
+      <a *ngIf="!isColles(item.value)" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+        <span class="icon-verification-api-icon pr-2">{{returnTitle(item.value)}}</span>
+        <div class="dashboard-nav-dropdown-menu submenu" id="style-7">
+          <ul class="list-group pl-1">
+            <li *ngFor="let child of returnChild(item.value) ; let j = index">
+              <div class="dashboard-nav-dropdown" *ngIf="child.type != 'item'"
+                [ngClass]=" (geturlPoints.menu == child.title)  ? 'active-sub' : ''"
+                (click)="geturlPoints.menu != child.title?setsubmenu($event,child.title):geturlPoints.menu=null">
+                <a class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                  <span class="icon-verification-api-icon pr-2"> {{child.title}}</span>
+                  <div class=" child-menu" id="style-8">
+                    <ul class="list-group pl-1">
+                      <li *ngFor="let subchild of child.children ; let l = index">
+                        <a *ngIf="subchild.type == 'item'" routerLinkActive="active-link" [routerLink]="subchild.url"
+                          (click)="setpagetitle(subchild.title,$event)"
+                          class="dashboard-dropdown-item ">{{subchild.title}}</a>
+                      </li>
+                    </ul>
+                  </div>
+                </a>
+              </div>
+              <a *ngIf="child.type == 'item' && !start(child.url)" routerLink="{{ child.url }}"
+                (click)="setsubmenu($event,child.title);menuremove();" routerLinkActive="active-link"
+                class="dashboard-dropdown-item">{{child.title}}
+              </a>
+
+              <a *ngIf="child.type == 'item' && start(child.url)" target="_blank"
+                [ngClass]="Subactive == i ? 'active' : ''" href="https://sprint-verify.readme.io/docs"
+                class="dashboard-dropdown-item">{{child.title}}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </a>
+      <a *ngIf="isColles(item.value)" class="dashboard-nav-item" routerLink="{{ returnurl(item.value) }}"
+        (click)="showdashboard(returnTitle(item.value))" routerLinkActive="active-link">
+        <span class="icon-verification-api-icon pr-2">{{returnTitle(item.value)}}</span>
+      </a>
+    </div>
+    <div id="accordion">
+      <div class="dashboard-nav-dropdown" *ngFor="let item of sidemenuData | keyvalue: originalOrder;let i= index"
+        data-toggle="collapse" [attr.data-target]="'#collapse'+ i" aria-expanded="false" [attr.aria-controls]="">
+        <a *ngIf="!isColles(item.value)" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+          <span class="icon-verification-api-icon pr-2">{{returnTitle(item.value)}}</span>
+          <div class="dashboard-nav-dropdown-menu submenu collapse" [attr.id]="'collapse'+ i" data-parent="#accordion">
+            <ul class="list-group pl-1" [id]="'child'+i">
+              <li *ngFor="let child of returnChild(item.value) ; let j = index">
+                <div class="dashboard-nav-dropdown" *ngIf="child.type != 'item'">
+                  <a class="dashboard-nav-item dashboard-nav-dropdown-toggle" [attr.data-toggle]="'collapse'"
+                    [attr.data-target]="(geturlPoints.menu == child.title)  ? '':'#' + 'prefix' + j"
+                    aria-expanded="false" [attr.aria-controls]="">
+                    <span class="icon-verification-api-icon pr-2"> {{child.title}}</span>
+                    <div class=" collapse child-menu" [attr.id]="'prefix'+ j" [attr.data-parent]="'#child'+i">
+                      <ul class="list-group pl-1">
+                        <li *ngFor="let subchild of child.children ; let l = index">
+                          <a *ngIf="subchild.type == 'item'" routerLinkActive="active-link" [routerLink]="subchild.url"
+                            (click)="setpagetitle(subchild.title,$event)"
+                            class="dashboard-dropdown-item ">{{subchild.title}}</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </a>
+                </div>
+                <a *ngIf="child.type == 'item' && !start(child.url)" routerLink="{{ child.url }}"
+                  routerLinkActive="active-link" class="dashboard-dropdown-item">{{child.title}}
+                </a>
+
+                <a *ngIf="child.type == 'item' && start(child.url)" target="_blank"
+                  [ngClass]="Subactive == i ? 'active' : ''" href="https://sprint-verify.readme.io/docs"
+                  class="dashboard-dropdown-item">{{child.title}}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </a>
+        <a *ngIf="isColles(item.value)" class="dashboard-nav-item" routerLink="{{ returnurl(item.value) }}"
+          (click)="showdashboard(returnTitle(item.value))" routerLinkActive="active-link">
+          <span class="icon-verification-api-icon pr-2">{{returnTitle(item.value)}}</span>
+        </a>
+      </div>
+    </div>
+  </nav> -->
+
+  <!-- <nav class="sidebar-nav">
+      <ul class="accordion" id="child-wrap">
+        <li *ngFor="let item of sidemenuData | keyvalue: originalOrder;let i= index">
+          <a *ngIf="!isColles(item.value)" data-toggle="collapse" [attr.data-target]="'#submenu'+ i"
+            [attr.aria-expanded]="(geturlPoints.mainmenu  ==  returnTitle(item.value) ) ? 'true' : 'false'" > {{returnTitle(item.value)}}</a>
+          <ul *ngIf="!isColles(item.value)" class=" nav-list collapse" [ngClass]="(geturlPoints.mainmenu  ==  returnTitle(item.value) ) ? 'show' : ''"  [id]="'submenu'+i" data-parent="#child-wrap">
+            <li id="child" *ngFor="let child of returnChild(item.value) ; let j = index">
+
+              <span class="" *ngIf="child.type != 'item'">
+                <a class="" [attr.data-toggle]="'collapse'"
+                  [attr.data-target]="'#' + 'prefix' + j" aria-expanded="false"
+                  [attr.aria-controls]="" routerLinkActive="active-link"
+                  [attr.aria-expanded]="(geturlPoints.menu  ==  child.title ) ? 'true' : 'false'"
+                  >
+
+                  <span>{{child.title}}</span>
+
+                  <ul class=" collapse child-menu" [ngClass]=" (geturlPoints.menu == child.title)  ? 'show' : ''"  [id]="'prefix'+ j" [attr.data-parent]="'#submenu'+i">
+                    <li *ngFor="let subchild of child.children ; let l = index">
+                      <a *ngIf="subchild.type == 'item'" routerLinkActive="active-link" [routerLink]="subchild.url"
+                        (click)="$event.stopPropagation();setpagetitle(subchild.title,$event);" class="">
+                        <span>{{subchild.title}}</span></a>
+                    </li>
+                  </ul>
+
+                </a>
+              </span>
+
+              <a *ngIf="child.type == 'item' && !start(child.url)" routerLink="{{ child.url }}"
+                routerLinkActive="active-link" (click)="setsubmenu($event,child.title);menuremove();"><span>{{child.title}}</span>
+              </a>
+              <a *ngIf="child.type == 'item' && start(child.url)" target="_blank" [routerLink]="child.url"
+                routerLinkActive="active-link" (click)="setsubmenu($event,child.title);menuremove();"><span>{{child.title}}</span>
+              </a>
+            </li>
+          </ul>
+          <a  *ngIf="isColles(item.value)" [routerLink]="returnurl(item.value)"
+            routerLinkActive="active-link" (click)="showdashboard(returnTitle(item.value));">{{returnTitle(item.value)}}</a>
+        </li>
+      </ul>
+
+  </nav> -->
+
+<!-- </div> -->
+

@@ -1,0 +1,8 @@
+<ng-template [ngIf]="isShow">
+    <div class="ri-custom-mdl ">
+        <div class="ri-custom-mdl-body">
+            <ng-content></ng-content>
+        </div>
+    </div>
+    <div *ngIf="isBackdropShow" class="ri-custom-mdl-background"></div>
+</ng-template>

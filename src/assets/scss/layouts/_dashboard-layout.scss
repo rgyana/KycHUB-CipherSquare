@@ -1,0 +1,18 @@
+.dashboard-content {
+  margin-left: 0;
+  padding: 10px 0;
+  position: relative;
+
+  .dashboard-compact &{
+    margin-left: 0px;
+  }
+  @include breakpoint("desktop-small", min){
+      margin-left: 290px;
+  }
+  @include breakpoint("desktop-wide", min){
+    margin-left: 330px;
+}
+  @include breakpoint("desktop-xxl", min){
+      margin-left: 370px;
+  }
+}

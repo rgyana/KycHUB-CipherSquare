@@ -1,0 +1,480 @@
+<div class="tab-pane">
+
+  <!-- Business PAN -->
+  <div class="kyc-box " *ngIf="selectedkycStep == 3">
+    <h5 class="kyc-heading pb-4">Document Verification</h5>
+    <p>You can upload JPG / JPEG / PNG of max. size 4MB</p>
+
+    <div class="form-row w-75">
+
+      <div class="col-12 col-lg-12">
+        <label class="w-50 mb-2">Business PAN<span class="text-danger star">*</span></label>
+
+        <div class="form-group d-flex mb-4 flex-column">
+          <div class="drop-zone" *ngIf="!businessPanImgPath" (drop)="onDrop($event,verifyDocType.BUSINESS_PAN)"
+            (dragover)="onDragOver($event)">
+            <svg class="svg-icon" viewBox="0 0 20 20">
+              <path
+                d="M8.749,9.934c0,0.247-0.202,0.449-0.449,0.449H4.257c-0.247,0-0.449-0.202-0.449-0.449S4.01,9.484,4.257,9.484H8.3C8.547,9.484,8.749,9.687,8.749,9.934 M7.402,12.627H4.257c-0.247,0-0.449,0.202-0.449,0.449s0.202,0.449,0.449,0.449h3.145c0.247,0,0.449-0.202,0.449-0.449S7.648,12.627,7.402,12.627 M8.3,6.339H4.257c-0.247,0-0.449,0.202-0.449,0.449c0,0.247,0.202,0.449,0.449,0.449H8.3c0.247,0,0.449-0.202,0.449-0.449C8.749,6.541,8.547,6.339,8.3,6.339 M18.631,4.543v10.78c0,0.248-0.202,0.45-0.449,0.45H2.011c-0.247,0-0.449-0.202-0.449-0.45V4.543c0-0.247,0.202-0.449,0.449-0.449h16.17C18.429,4.094,18.631,4.296,18.631,4.543 M17.732,4.993H2.46v9.882h15.272V4.993z M16.371,13.078c0,0.247-0.202,0.449-0.449,0.449H9.646c-0.247,0-0.449-0.202-0.449-0.449c0-1.479,0.883-2.747,2.162-3.299c-0.434-0.418-0.714-1.008-0.714-1.642c0-1.197,0.997-2.246,2.133-2.246s2.134,1.049,2.134,2.246c0,0.634-0.28,1.224-0.714,1.642C15.475,10.331,16.371,11.6,16.371,13.078M11.542,8.137c0,0.622,0.539,1.348,1.235,1.348s1.235-0.726,1.235-1.348c0-0.622-0.539-1.348-1.235-1.348S11.542,7.515,11.542,8.137 M15.435,12.629c-0.214-1.273-1.323-2.246-2.657-2.246s-2.431,0.973-2.644,2.246H15.435z">
+              </path>
+            </svg>
+
+            <div>
+              <input type="file" (change)="onVerifyDocFileSelected($event,verifyDocType.BUSINESS_PAN)"
+                style="display:none" #fileInput />
+              Drag and drop a file here or
+              <button type="button" class="btn btn-light" (click)="fileInput.click()">Browse File</button>
+            </div>
+          </div>
+
+          <div *ngIf="businessPanImgPath">
+            <img [src]="businessPanImgPath" style="height: auto !important; width: 300px !important;"
+              alt="business_Pan_img">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-12 pt-2 pb-5" *ngIf="panDocFile">{{panDocFile.name}}</div>
+
+      <div class="col-12 d-flex" *ngIf="!businessPanImgPath">
+        <button type="button" class="btn btn-outline-primary w-25 mr-2">Cancel</button>
+        <button type="button" class="btn btn-primary w-25" [disabled]="!this.panDocFileUrl"
+          (click)="callPanOcrApi(this.panDocFileUrl)">Save & Next</button>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- Business PAN Ends  -->
+
+
+  <!--GST Registration Certificate -->
+  <div class="kyc-box" *ngIf="selectedkycStep == 5">
+    <h5 class="kyc-heading pb-4">Document Verification</h5>
+    <p>You can upload JPG / JPEG / PNG of max. size 4MB</p>
+
+    <div class="form-row w-75">
+      <div class="col-12 col-lg-12">
+        <label class="w-50 mb-2">GST Registration Certificate<span class="text-danger star">*</span></label>
+        <div class="form-group d-flex mb-4 flex-column">
+
+          <div class="drop-zone" *ngIf="!regCertificateImgPath"
+            (drop)="onDrop($event,verifyDocType.REGISTRATION_CERTIFICATE)" (dragover)="onDragOver($event)">
+            <svg class="svg-icon" viewBox="0 0 20 20">
+              <path
+                d="M8.749,9.934c0,0.247-0.202,0.449-0.449,0.449H4.257c-0.247,0-0.449-0.202-0.449-0.449S4.01,9.484,4.257,9.484H8.3C8.547,9.484,8.749,9.687,8.749,9.934 M7.402,12.627H4.257c-0.247,0-0.449,0.202-0.449,0.449s0.202,0.449,0.449,0.449h3.145c0.247,0,0.449-0.202,0.449-0.449S7.648,12.627,7.402,12.627 M8.3,6.339H4.257c-0.247,0-0.449,0.202-0.449,0.449c0,0.247,0.202,0.449,0.449,0.449H8.3c0.247,0,0.449-0.202,0.449-0.449C8.749,6.541,8.547,6.339,8.3,6.339 M18.631,4.543v10.78c0,0.248-0.202,0.45-0.449,0.45H2.011c-0.247,0-0.449-0.202-0.449-0.45V4.543c0-0.247,0.202-0.449,0.449-0.449h16.17C18.429,4.094,18.631,4.296,18.631,4.543 M17.732,4.993H2.46v9.882h15.272V4.993z M16.371,13.078c0,0.247-0.202,0.449-0.449,0.449H9.646c-0.247,0-0.449-0.202-0.449-0.449c0-1.479,0.883-2.747,2.162-3.299c-0.434-0.418-0.714-1.008-0.714-1.642c0-1.197,0.997-2.246,2.133-2.246s2.134,1.049,2.134,2.246c0,0.634-0.28,1.224-0.714,1.642C15.475,10.331,16.371,11.6,16.371,13.078M11.542,8.137c0,0.622,0.539,1.348,1.235,1.348s1.235-0.726,1.235-1.348c0-0.622-0.539-1.348-1.235-1.348S11.542,7.515,11.542,8.137 M15.435,12.629c-0.214-1.273-1.323-2.246-2.657-2.246s-2.431,0.973-2.644,2.246H15.435z">
+              </path>
+            </svg>
+
+            <div>
+              <input type="file" (change)="onVerifyDocFileSelected($event,verifyDocType.REGISTRATION_CERTIFICATE)"
+                style="display:none" #fileInput />
+              Drag and drop a file here or
+              <button type="button" class="btn btn-light" (click)="fileInput.click()">Click to select a file</button>
+            </div>
+          </div>
+
+          <div *ngIf="regCertificateImgPath">
+            <img [src]="regCertificateImgPath" style="height: auto !important; width: 300px !important;" alt="gst_img">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-12" *ngIf="regCertificationFile">{{regCertificationFile.name}}</div>
+
+      <!-- Cancel and Next Button -->
+      <div class="col-12 d-flex" *ngIf="!regCertificateImgPath">
+        <button type="button" class="btn btn-outline-primary w-25 mr-2">Cancel</button>
+        <button type="button" class="btn btn-primary w-25" [disabled]="!this.regCertificationFileUrl"
+          (click)="callGstOcrApi(this.regCertificationFileUrl)">Save & Next</button>
+      </div>
+      <!-- Cancel and Next Button -->
+    </div>
+
+  </div>
+  <!-- GST Registration Certificate Ends -->
+
+
+  <!-- KYC for Authorised Signatory -->
+  <form [formGroup]="partnerKycForm">
+    <div class="form-row w-100" *ngIf="selectedkycStep == 8 || selectedkycStep == 9">
+      <div class="col-12 col-lg-12 d-flex flex-wrap">
+        <label class="w-50 mb-4">KYC for Authorised Signatory<span class="text-danger star">*</span></label>
+        <div class="form-group d-flex flex-wrap mb-4">
+
+
+          <!-- Person Name -->
+          <div class="col-12 col-lg-6 mb-4">
+            <label class="">Person Name <span class="text-danger star">*</span></label>
+            <input class="form-control" type="text" formControlName="person_name" placeholder=" " />
+            <span class="highlight"></span>
+
+            <!-- Person Name error message -->
+            <div *ngIf="partnerKycForm.get('person_name')?.touched">
+              <small class="text-danger" *ngIf="partnerKycForm.get('person_name')?.errors?.['required']">Person Name
+                is required</small>
+            </div>
+            <!-- Person Name error message ends -->
+
+          </div>
+          <!-- Person Name Ends -->
+
+          <!-- Mobile Number -->
+          <div class="col-12 col-lg-6 mb-4">
+            <label class="">Mobile Number<span class="text-danger star">*</span></label>
+            <input class="form-control" type="text" formControlName="mobile_number" />
+            <span class="highlight"></span>
+
+            <!-- Mobile Number error message -->
+            <div *ngIf="partnerKycForm.get('mobile_number')?.touched">
+              <small class="text-danger" *ngIf="partnerKycForm.get('mobile_number')?.errors?.['required']">Business Name
+                is
+                required</small>
+            </div>
+            <!-- Mobile Number error message ends -->
+
+          </div>
+          <!-- Mobile Number Ends -->
+
+          <!-- Email ID -->
+          <div class="col-12 col-lg-6 mb-4">
+            <label class="">Email Id <span class="text-danger star">*</span></label>
+            <input class="form-control" type="text" formControlName="email_id" placeholder=" " />
+            <span class="highlight"></span>
+
+            <!-- email id error message -->
+            <div *ngIf="partnerKycForm.get('email_id')?.touched">
+              <small class="text-danger" *ngIf="partnerKycForm.get('email_id')?.errors?.['required']">Business Name is
+                required</small>
+            </div>
+            <!-- email id error message ends -->
+
+          </div>
+          <!-- Email ID Ends -->
+
+          <!-- Address Proof Type -->
+          <div class="col-12 col-lg-6 mb-4">
+            <div class="form-group">
+              <label class="">Address Proof <span class="text-danger star">*</span></label>
+
+              <select class="form-control" formControlName="address_proof" (change)="setAddressProofValue($event)">
+                <option value="" disabled selected>Choose any Address Proof</option>
+                <option value="AADHAR">Aadhaar Card</option>
+                <option value="LICENCE">Driving License</option>
+                <option value="PASSPORT">Passport</option>
+                <option value="VOTERID">Voter ID</option>
+              </select>
+              <span class="highlight"></span>
+
+              <!-- Document Type error message -->
+              <!-- <div *ngIf="partnerKycForm.get('doctype')?.touched">
+                <small class="text-danger" *ngIf="partnerKycForm.get('address_proof')?.errors?.['required']">Document
+                  Type is
+                  required</small>
+              </div> -->
+              <!-- Document Type error message ends -->
+
+            </div>
+          </div>
+          <!-- Address Proof Type Ends -->
+
+          <!-- Partner PAN -->
+          <div class="col-12 col-lg-6">
+            <label class="w-50 mb-2">Upload Partner PAN<span class="text-danger star">*</span></label>
+            <div class="form-group d-flex mb-4 flex-column">
+
+              <div class="drop-zone" *ngIf="!partnerPanImgPath" (drop)="onDrop($event,verifyDocType.PARTNER_PAN)"
+                (dragover)="onDragOver($event)">
+                <svg class="svg-icon" viewBox="0 0 20 20">
+                  <path
+                    d="M8.749,9.934c0,0.247-0.202,0.449-0.449,0.449H4.257c-0.247,0-0.449-0.202-0.449-0.449S4.01,9.484,4.257,9.484H8.3C8.547,9.484,8.749,9.687,8.749,9.934 M7.402,12.627H4.257c-0.247,0-0.449,0.202-0.449,0.449s0.202,0.449,0.449,0.449h3.145c0.247,0,0.449-0.202,0.449-0.449S7.648,12.627,7.402,12.627 M8.3,6.339H4.257c-0.247,0-0.449,0.202-0.449,0.449c0,0.247,0.202,0.449,0.449,0.449H8.3c0.247,0,0.449-0.202,0.449-0.449C8.749,6.541,8.547,6.339,8.3,6.339 M18.631,4.543v10.78c0,0.248-0.202,0.45-0.449,0.45H2.011c-0.247,0-0.449-0.202-0.449-0.45V4.543c0-0.247,0.202-0.449,0.449-0.449h16.17C18.429,4.094,18.631,4.296,18.631,4.543 M17.732,4.993H2.46v9.882h15.272V4.993z M16.371,13.078c0,0.247-0.202,0.449-0.449,0.449H9.646c-0.247,0-0.449-0.202-0.449-0.449c0-1.479,0.883-2.747,2.162-3.299c-0.434-0.418-0.714-1.008-0.714-1.642c0-1.197,0.997-2.246,2.133-2.246s2.134,1.049,2.134,2.246c0,0.634-0.28,1.224-0.714,1.642C15.475,10.331,16.371,11.6,16.371,13.078M11.542,8.137c0,0.622,0.539,1.348,1.235,1.348s1.235-0.726,1.235-1.348c0-0.622-0.539-1.348-1.235-1.348S11.542,7.515,11.542,8.137 M15.435,12.629c-0.214-1.273-1.323-2.246-2.657-2.246s-2.431,0.973-2.644,2.246H15.435z">
+                  </path>
+                </svg>
+
+                <div>
+                  <input type="file" (change)="onVerifyDocFileSelected($event,verifyDocType.PARTNER_PAN)"
+                    style="display:none" #fileInput1 />
+                  Drag and drop a file here or
+                  <button type="button" class="btn btn-light" (click)="fileInput1.click()">Browse File</button>
+                </div>
+              </div>
+
+              <div *ngIf="partnerPanImgPath">
+                <img [src]="partnerPanImgPath" style="height: auto !important; width: 300px !important;"
+                  alt="partner_Pan_img">
+              </div>
+
+              <div class="col-12 col-lg-12 pt-2 pb-5" *ngIf="partnerPanDocFile">
+                {{partnerPanDocFile.name}}
+              </div>
+
+            </div>
+          </div>
+          <!-- Partner PAN Ends -->
+
+        </div>
+
+
+        <div class="form-group d-flex flex-wrap mb-4 " [ngSwitch]="AddressProofValue">
+
+          <!-- Aadhaar Card Front Side -->
+          <div class="col-12 col-lg-6" *ngSwitchCase="'AADHAR'">
+            <div>
+
+              <label class="w-50 mb-2" for="AADHAR">Upload AADHAAR front side<span
+                  class="text-danger star">*</span></label>
+              <div class="form-group d-flex mb-4 flex-column">
+
+                <div class="drop-zone" *ngIf="!additionalProofFrontImgPath"
+                  (drop)="onDrop($event,verifyDocType.AADHAR_CARD_FRONT)" (dragover)="onDragOver($event)">
+                  <svg class="svg-icon" viewBox="0 0 20 20">
+                    <path
+                      d="M8.749,9.934c0,0.247-0.202,0.449-0.449,0.449H4.257c-0.247,0-0.449-0.202-0.449-0.449S4.01,9.484,4.257,9.484H8.3C8.547,9.484,8.749,9.687,8.749,9.934 M7.402,12.627H4.257c-0.247,0-0.449,0.202-0.449,0.449s0.202,0.449,0.449,0.449h3.145c0.247,0,0.449-0.202,0.449-0.449S7.648,12.627,7.402,12.627 M8.3,6.339H4.257c-0.247,0-0.449,0.202-0.449,0.449c0,0.247,0.202,0.449,0.449,0.449H8.3c0.247,0,0.449-0.202,0.449-0.449C8.749,6.541,8.547,6.339,8.3,6.339 M18.631,4.543v10.78c0,0.248-0.202,0.45-0.449,0.45H2.011c-0.247,0-0.449-0.202-0.449-0.45V4.543c0-0.247,0.202-0.449,0.449-0.449h16.17C18.429,4.094,18.631,4.296,18.631,4.543 M17.732,4.993H2.46v9.882h15.272V4.993z M16.371,13.078c0,0.247-0.202,0.449-0.449,0.449H9.646c-0.247,0-0.449-0.202-0.449-0.449c0-1.479,0.883-2.747,2.162-3.299c-0.434-0.418-0.714-1.008-0.714-1.642c0-1.197,0.997-2.246,2.133-2.246s2.134,1.049,2.134,2.246c0,0.634-0.28,1.224-0.714,1.642C15.475,10.331,16.371,11.6,16.371,13.078M11.542,8.137c0,0.622,0.539,1.348,1.235,1.348s1.235-0.726,1.235-1.348c0-0.622-0.539-1.348-1.235-1.348S11.542,7.515,11.542,8.137 M15.435,12.629c-0.214-1.273-1.323-2.246-2.657-2.246s-2.431,0.973-2.644,2.246H15.435z">
+                    </path>
+                  </svg>
+
+                  <div>
+                    <input id="option1" type="file"
+                      (change)="onVerifyDocFileSelected($event,verifyDocType.AADHAR_CARD_FRONT)" style="display:none"
+                      #fileInput2 />
+                    Drag and drop a file here or
+                    <button type="button" class="btn btn-light" (click)="fileInput2.click()">Browse File</button>
+                  </div>
+                </div>
+
+                <div *ngIf="additionalProofFrontImgPath">
+                  <img [src]="additionalProofFrontImgPath" style="height: auto !important; width: 300px !important;"
+                    alt="partner_Aadhaar_img">
+                </div>
+
+                <div class="col-12 col-lg-12 pt-2 pb-5" *ngIf="aadharFrontDocFile">
+                  {{aadharFrontDocFile.name}}
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+          <!-- Aadhaar Card Front Side Ends -->
+
+          <!-- Aadhar Card Back Side  -->
+          <div class="col-12 col-lg-6" *ngSwitchCase="'AADHAR'">
+            <div>
+              <label class="w-50 mb-2" for="AADHAR">Upload AADHAAR Back side<span
+                  class="text-danger star">*</span></label>
+              <div class="form-group d-flex mb-4 flex-column">
+
+                <div class="drop-zone" *ngIf="!additionalProofBackImgPath"
+                  (drop)="onDrop($event,verifyDocType.AADHAR_CARD_BACK)" (dragover)="onDragOver($event)">
+                  <svg class="svg-icon" viewBox="0 0 20 20">
+                    <path
+                      d="M8.749,9.934c0,0.247-0.202,0.449-0.449,0.449H4.257c-0.247,0-0.449-0.202-0.449-0.449S4.01,9.484,4.257,9.484H8.3C8.547,9.484,8.749,9.687,8.749,9.934 M7.402,12.627H4.257c-0.247,0-0.449,0.202-0.449,0.449s0.202,0.449,0.449,0.449h3.145c0.247,0,0.449-0.202,0.449-0.449S7.648,12.627,7.402,12.627 M8.3,6.339H4.257c-0.247,0-0.449,0.202-0.449,0.449c0,0.247,0.202,0.449,0.449,0.449H8.3c0.247,0,0.449-0.202,0.449-0.449C8.749,6.541,8.547,6.339,8.3,6.339 M18.631,4.543v10.78c0,0.248-0.202,0.45-0.449,0.45H2.011c-0.247,0-0.449-0.202-0.449-0.45V4.543c0-0.247,0.202-0.449,0.449-0.449h16.17C18.429,4.094,18.631,4.296,18.631,4.543 M17.732,4.993H2.46v9.882h15.272V4.993z M16.371,13.078c0,0.247-0.202,0.449-0.449,0.449H9.646c-0.247,0-0.449-0.202-0.449-0.449c0-1.479,0.883-2.747,2.162-3.299c-0.434-0.418-0.714-1.008-0.714-1.642c0-1.197,0.997-2.246,2.133-2.246s2.134,1.049,2.134,2.246c0,0.634-0.28,1.224-0.714,1.642C15.475,10.331,16.371,11.6,16.371,13.078M11.542,8.137c0,0.622,0.539,1.348,1.235,1.348s1.235-0.726,1.235-1.348c0-0.622-0.539-1.348-1.235-1.348S11.542,7.515,11.542,8.137 M15.435,12.629c-0.214-1.273-1.323-2.246-2.657-2.246s-2.431,0.973-2.644,2.246H15.435z">
+                    </path>
+                  </svg>
+
+                  <div>
+                    <input id="option1" type="file"
+                      (change)="onVerifyDocFileSelected($event,verifyDocType.AADHAR_CARD_BACK)" style="display:none"
+                      #fileInput3 />
+                    Drag and drop a file here or
+                    <button type="button" class="btn btn-light" (click)="fileInput3.click()">Browse File</button>
+                  </div>
+                </div>
+
+                <div *ngIf="additionalProofBackImgPath">
+                  <img [src]="additionalProofBackImgPath" style="height: auto !important; width: 300px !important;"
+                    alt="partner_Aadhaar_img">
+                </div>
+
+                <div class="col-12 col-lg-12 pt-2 pb-5" *ngIf="aadharBackDocFile">
+                  {{aadharBackDocFile.name}}
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- Aadhaar Card Back Side Ends -->
+
+          <!-- Driving License -->
+          <div class="col-12 col-lg-6" *ngSwitchCase="'LICENCE'">
+            <div>
+
+              <label class="w-50 mb-2" for="LICENCE">Upload Driving License<span
+                  class="text-danger star">*</span></label>
+              <div class="form-group d-flex mb-4 flex-column">
+
+                <div class="drop-zone" *ngIf="!additionalProofFrontImgPath"
+                  (drop)="onDrop($event,verifyDocType.DRIVING_LICENSE)" (dragover)="onDragOver($event)">
+                  <svg class="svg-icon" viewBox="0 0 20 20">
+                    <path
+                      d="M8.749,9.934c0,0.247-0.202,0.449-0.449,0.449H4.257c-0.247,0-0.449-0.202-0.449-0.449S4.01,9.484,4.257,9.484H8.3C8.547,9.484,8.749,9.687,8.749,9.934 M7.402,12.627H4.257c-0.247,0-0.449,0.202-0.449,0.449s0.202,0.449,0.449,0.449h3.145c0.247,0,0.449-0.202,0.449-0.449S7.648,12.627,7.402,12.627 M8.3,6.339H4.257c-0.247,0-0.449,0.202-0.449,0.449c0,0.247,0.202,0.449,0.449,0.449H8.3c0.247,0,0.449-0.202,0.449-0.449C8.749,6.541,8.547,6.339,8.3,6.339 M18.631,4.543v10.78c0,0.248-0.202,0.45-0.449,0.45H2.011c-0.247,0-0.449-0.202-0.449-0.45V4.543c0-0.247,0.202-0.449,0.449-0.449h16.17C18.429,4.094,18.631,4.296,18.631,4.543 M17.732,4.993H2.46v9.882h15.272V4.993z M16.371,13.078c0,0.247-0.202,0.449-0.449,0.449H9.646c-0.247,0-0.449-0.202-0.449-0.449c0-1.479,0.883-2.747,2.162-3.299c-0.434-0.418-0.714-1.008-0.714-1.642c0-1.197,0.997-2.246,2.133-2.246s2.134,1.049,2.134,2.246c0,0.634-0.28,1.224-0.714,1.642C15.475,10.331,16.371,11.6,16.371,13.078M11.542,8.137c0,0.622,0.539,1.348,1.235,1.348s1.235-0.726,1.235-1.348c0-0.622-0.539-1.348-1.235-1.348S11.542,7.515,11.542,8.137 M15.435,12.629c-0.214-1.273-1.323-2.246-2.657-2.246s-2.431,0.973-2.644,2.246H15.435z">
+                    </path>
+                  </svg>
+
+                  <div>
+                    <input id="option1" type="file"
+                      (change)="onVerifyDocFileSelected($event,verifyDocType.DRIVING_LICENSE)" style="display:none"
+                      #fileInput4 />
+                    Drag and drop a file here or
+                    <button type="button" class="btn btn-light" (click)="fileInput4.click()">Browse File</button>
+                  </div>
+                </div>
+
+                <div *ngIf="additionalProofFrontImgPath">
+                  <img [src]="additionalProofFrontImgPath" style="height: auto !important; width: 300px !important;"
+                    alt="partner_dl_img">
+                </div>
+
+                <div class="col-12 col-lg-12 pt-2 pb-5" *ngIf="drivingLicDocFile">
+                  {{drivingLicDocFile.name}}
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- Driving License Ends -->
+
+          <!-- Passport Front Side -->
+          <div class="col-16 col-lg-6" *ngSwitchCase="'PASSPORT'">
+            <div>
+
+              <label class="w-50 mb-2" for="PASSPORT">Upload PASSPORT front side<span
+                  class="text-danger star">*</span></label>
+              <div class="form-group d-flex mb-4 flex-column">
+
+                <div class="drop-zone" *ngIf="!additionalProofFrontImgPath"
+                  (drop)="onDrop($event,verifyDocType.PASSPORT_FRONT)" (dragover)="onDragOver($event)">
+                  <svg class="svg-icon" viewBox="0 0 20 20">
+                    <path
+                      d="M8.749,9.934c0,0.247-0.202,0.449-0.449,0.449H4.257c-0.247,0-0.449-0.202-0.449-0.449S4.01,9.484,4.257,9.484H8.3C8.547,9.484,8.749,9.687,8.749,9.934 M7.402,12.627H4.257c-0.247,0-0.449,0.202-0.449,0.449s0.202,0.449,0.449,0.449h3.145c0.247,0,0.449-0.202,0.449-0.449S7.648,12.627,7.402,12.627 M8.3,6.339H4.257c-0.247,0-0.449,0.202-0.449,0.449c0,0.247,0.202,0.449,0.449,0.449H8.3c0.247,0,0.449-0.202,0.449-0.449C8.749,6.541,8.547,6.339,8.3,6.339 M18.631,4.543v10.78c0,0.248-0.202,0.45-0.449,0.45H2.011c-0.247,0-0.449-0.202-0.449-0.45V4.543c0-0.247,0.202-0.449,0.449-0.449h16.17C18.429,4.094,18.631,4.296,18.631,4.543 M17.732,4.993H2.46v9.882h15.272V4.993z M16.371,13.078c0,0.247-0.202,0.449-0.449,0.449H9.646c-0.247,0-0.449-0.202-0.449-0.449c0-1.479,0.883-2.747,2.162-3.299c-0.434-0.418-0.714-1.008-0.714-1.642c0-1.197,0.997-2.246,2.133-2.246s2.134,1.049,2.134,2.246c0,0.634-0.28,1.224-0.714,1.642C15.475,10.331,16.371,11.6,16.371,13.078M11.542,8.137c0,0.622,0.539,1.348,1.235,1.348s1.235-0.726,1.235-1.348c0-0.622-0.539-1.348-1.235-1.348S11.542,7.515,11.542,8.137 M15.435,12.629c-0.214-1.273-1.323-2.246-2.657-2.246s-2.431,0.973-2.644,2.246H15.435z">
+                    </path>
+                  </svg>
+
+                  <div>
+                    <input id="option1" type="file"
+                      (change)="onVerifyDocFileSelected($event,verifyDocType.PASSPORT_FRONT)" style="display:none"
+                      #fileInput5 />
+                    Drag and drop a file here or
+                    <button type="button" class="btn btn-light" (click)="fileInput5.click()">Browse File</button>
+                  </div>
+                </div>
+
+                <div *ngIf="additionalProofFrontImgPath">
+                  <img [src]="additionalProofFrontImgPath" style="height: auto !important; width: 300px !important;"
+                    alt="partner_passportf_img">
+                </div>
+
+                <div class="col-12 col-lg-12 pt-2 pb-5" *ngIf="passportFrontDocFile">
+                  {{passportFrontDocFile.name}}
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+          <!-- Passport Front Side Ends -->
+
+          <!-- Passport Back Side -->
+          <div class="col-12 col-lg-6" *ngSwitchCase="'PASSPORT'">
+            <div>
+
+              <label class="w-50 mb-2" for="PASSPORT">Upload PASSPORT back side<span
+                  class="text-danger star">*</span></label>
+              <div class="form-group d-flex mb-4 flex-column">
+
+                <div class="drop-zone" *ngIf="!additionalProofBackImgPath"
+                  (drop)="onDrop($event,verifyDocType.PASSPORT_BACK)" (dragover)="onDragOver($event)">
+                  <svg class="svg-icon" viewBox="0 0 20 20">
+                    <path
+                      d="M8.749,9.934c0,0.247-0.202,0.449-0.449,0.449H4.257c-0.247,0-0.449-0.202-0.449-0.449S4.01,9.484,4.257,9.484H8.3C8.547,9.484,8.749,9.687,8.749,9.934 M7.402,12.627H4.257c-0.247,0-0.449,0.202-0.449,0.449s0.202,0.449,0.449,0.449h3.145c0.247,0,0.449-0.202,0.449-0.449S7.648,12.627,7.402,12.627 M8.3,6.339H4.257c-0.247,0-0.449,0.202-0.449,0.449c0,0.247,0.202,0.449,0.449,0.449H8.3c0.247,0,0.449-0.202,0.449-0.449C8.749,6.541,8.547,6.339,8.3,6.339 M18.631,4.543v10.78c0,0.248-0.202,0.45-0.449,0.45H2.011c-0.247,0-0.449-0.202-0.449-0.45V4.543c0-0.247,0.202-0.449,0.449-0.449h16.17C18.429,4.094,18.631,4.296,18.631,4.543 M17.732,4.993H2.46v9.882h15.272V4.993z M16.371,13.078c0,0.247-0.202,0.449-0.449,0.449H9.646c-0.247,0-0.449-0.202-0.449-0.449c0-1.479,0.883-2.747,2.162-3.299c-0.434-0.418-0.714-1.008-0.714-1.642c0-1.197,0.997-2.246,2.133-2.246s2.134,1.049,2.134,2.246c0,0.634-0.28,1.224-0.714,1.642C15.475,10.331,16.371,11.6,16.371,13.078M11.542,8.137c0,0.622,0.539,1.348,1.235,1.348s1.235-0.726,1.235-1.348c0-0.622-0.539-1.348-1.235-1.348S11.542,7.515,11.542,8.137 M15.435,12.629c-0.214-1.273-1.323-2.246-2.657-2.246s-2.431,0.973-2.644,2.246H15.435z">
+                    </path>
+                  </svg>
+
+                  <div>
+                    <input id="option1" type="file"
+                      (change)="onVerifyDocFileSelected($event,verifyDocType.PASSPORT_BACK)" style="display:none"
+                      #fileInput6 />
+                    Drag and drop a file here or
+                    <button type="button" class="btn btn-light" (click)="fileInput6.click()">Browse File</button>
+                  </div>
+                </div>
+
+                <div *ngIf="additionalProofBackImgPath">
+                  <img [src]="additionalProofBackImgPath" style="height: auto !important; width: 300px !important;"
+                    alt="partner_passportb_img">
+                </div>
+
+                <div class="col-12 col-lg-12 pt-2 pb-5" *ngIf="passportBackDocFile">
+                  {{passportBackDocFile.name}}
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- Passport Back Side Ends -->
+
+          <!-- Voter ID -->
+          <div class="col-12 col-lg-6" *ngSwitchCase="'VOTERID'">
+            <div>
+
+              <label class="w-50 mb-2" for="VOTERID">Upload Voter ID<span class="text-danger star">*</span></label>
+              <div class="form-group d-flex mb-4 flex-column">
+
+                <div class="drop-zone" *ngIf="!additionalProofFrontImgPath"
+                  (drop)="onDrop($event,verifyDocType.VOTER_ID)" (dragover)="onDragOver($event)">
+                  <svg class="svg-icon" viewBox="0 0 20 20">
+                    <path
+                      d="M8.749,9.934c0,0.247-0.202,0.449-0.449,0.449H4.257c-0.247,0-0.449-0.202-0.449-0.449S4.01,9.484,4.257,9.484H8.3C8.547,9.484,8.749,9.687,8.749,9.934 M7.402,12.627H4.257c-0.247,0-0.449,0.202-0.449,0.449s0.202,0.449,0.449,0.449h3.145c0.247,0,0.449-0.202,0.449-0.449S7.648,12.627,7.402,12.627 M8.3,6.339H4.257c-0.247,0-0.449,0.202-0.449,0.449c0,0.247,0.202,0.449,0.449,0.449H8.3c0.247,0,0.449-0.202,0.449-0.449C8.749,6.541,8.547,6.339,8.3,6.339 M18.631,4.543v10.78c0,0.248-0.202,0.45-0.449,0.45H2.011c-0.247,0-0.449-0.202-0.449-0.45V4.543c0-0.247,0.202-0.449,0.449-0.449h16.17C18.429,4.094,18.631,4.296,18.631,4.543 M17.732,4.993H2.46v9.882h15.272V4.993z M16.371,13.078c0,0.247-0.202,0.449-0.449,0.449H9.646c-0.247,0-0.449-0.202-0.449-0.449c0-1.479,0.883-2.747,2.162-3.299c-0.434-0.418-0.714-1.008-0.714-1.642c0-1.197,0.997-2.246,2.133-2.246s2.134,1.049,2.134,2.246c0,0.634-0.28,1.224-0.714,1.642C15.475,10.331,16.371,11.6,16.371,13.078M11.542,8.137c0,0.622,0.539,1.348,1.235,1.348s1.235-0.726,1.235-1.348c0-0.622-0.539-1.348-1.235-1.348S11.542,7.515,11.542,8.137 M15.435,12.629c-0.214-1.273-1.323-2.246-2.657-2.246s-2.431,0.973-2.644,2.246H15.435z">
+                    </path>
+                  </svg>
+
+                  <div>
+                    <input id="option1" type="file" (change)="onVerifyDocFileSelected($event,verifyDocType.VOTER_ID)"
+                      style="display:none" #fileInput7 />
+                    Drag and drop a file here or
+                    <button type="button" class="btn btn-light" (click)="fileInput7.click()">Browse File</button>
+                  </div>
+                </div>
+
+                <div *ngIf="additionalProofFrontImgPath">
+                  <img [src]="additionalProofFrontImgPath" style="height: auto !important; width: 300px !important;"
+                    alt="partner_voterid_img">
+                </div>
+
+                <div class="col-12 col-lg-12 pt-2 pb-5" *ngIf="voterIdDocFile">
+                  {{voterIdDocFile.name}}
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- Voter ID Ends -->
+
+        </div>
+
+      </div>
+
+      <!-- SAVE & SUBMIT BUTTON -->
+      <div class="col-12 col-lg-12 d-flex justify-content-end">
+        <button type="button" class="btn save-btn" [disabled]="kycMaxStepLimit != 9" (click)="callFinalStepApi()">
+          SAVE & SUBMIT
+        </button>
+      </div>
+      <!-- SAVE & SUBMIT BUTTON -->
+
+    </div>
+  </form>
+  <!-- KYC for Authorised Signatory Ends -->
+
+</div>
+
+<!-- <ri-custom-mdl [id]="mdlId">
+  <div class="bg-light fundHistoryMdl">
+      Are you sure to submit ?
+      <button>Yes</button>
+      <button>No</button>
+  </div>
+
+</ri-custom-mdl> -->

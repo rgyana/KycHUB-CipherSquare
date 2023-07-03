@@ -1,0 +1,69 @@
+.kyc-profile-wrap {
+  .form-progress {
+    list-style: none;
+
+    li {
+      position: relative;
+      padding-left: 15px;
+      font-size: 14px;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+
+      &.inactive {
+        color: #BCBCBC;
+        font-weight: $font-weight-bold;
+      }
+
+      &.active {
+        color: #42AD05;
+        font-weight: $font-weight-semibold;
+        &:after {
+          background-color: #42AD05;
+        }
+      }
+
+      &:before {
+        content: '\f058';
+        position: absolute;
+        font-family: "Font Awesome 5 pro";
+        display: inline-block;
+        left: -15px;
+        font-weight: 900;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 100%;
+        bottom: -15px;
+        left: -8px;
+        background-color: #A7A7A7;
+      }
+      &:last-child{
+        &:after {
+         display: none;
+        }
+      }
+    }
+  }
+
+  .form-content {
+    background-color: #FAF9F9;
+    overflow: hidden;
+
+    form {
+      overflow: hidden;
+      fieldset{
+        transform-origin: top center;
+      }
+    }
+  }
+
+  .account-verification-wrap {
+    padding: 10px;
+    background-color: #E7ECEE;
+    border-radius: 15px;
+    margin-bottom: 20px;
+  }
+}

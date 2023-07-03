@@ -1,0 +1,27 @@
+.btn.save-btn {
+  width: 160px;
+  float: right;
+}
+
+.claender-img{
+  position: absolute;
+  margin-left: 90%;
+  top: 9px;
+}
+
+.help-btn {
+  // width: 100%;
+  height: 45px;
+  background: #DFF2FD 0% 0% no-repeat padding-box;
+  border: 1px solid #1179A7;
+  border-radius: 5px;
+
+
+  .help{
+    font: normal normal 600 16px/17px Montserrat;
+    color: #1179A7 !important;
+    border: none;
+    background: transparent;
+    padding-top: 12px;
+  }
+}

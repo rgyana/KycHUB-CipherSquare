@@ -1,0 +1,36 @@
+<div class="customTblFilterHeaderBox">
+    <div>
+        <label class="m-0">Pages</label>
+        <div class="form-group">
+            <select class="form-control" (change)="_PytCustTblService.dtUpdateByPageLength($event,tableOptions)">
+            <option *ngFor="let item of tableOptions.config.pagger"
+            [selected]="tableOptions.config.totalItmePerPage == item" [value]="item">
+                {{item}}</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" *ngIf="tableOptions.config.searchType">
+        <input type="text"  appSrchDbounce appSearchBox [debounceTime]="500" (onEvent)="_PytCustTblService.dtSearchBy($event,tableOptions)" type="text" placeholder="Search" class="dtSearch form-control" placeholder="Search...">
+    </div>
+
+    <div>
+        <label class="m-0">Viewing {{tableOptions.config.fromRec}}-{{tableOptions.config.toRec}} of
+        {{tableOptions.config.totalCount}}</label>
+
+        <div>
+            <span [ngClass]="{'pagerMute':tableOptions.config.currentPage == 1}" (click)="tableOptions.config.currentPage > 1? _PytCustTblService.dtUpdateByPagination('back',tableOptions) : false"><i
+        class="fas fa-caret-left"></i></span>
+            <span [ngClass]="{'pagerMute':tableOptions.config.totalPages == tableOptions.config.currentPage}" (click)="tableOptions.config.totalPages > tableOptions.config.currentPage? _PytCustTblService.dtUpdateByPagination('next',tableOptions): false"><i
+        class="fas fa-caret-right"></i></span>
+        </div>
+
+        <a href="javascript:void(0)" *ngIf="tableOptions.config.reloadTable" class="syncBtn" [class]="{'rotateIt': tableOptions.config.rotateIt}" (click)="tableOptions.dtUpdateFnCallBack()" rel="noopener noreferrer"><i class="fas fa-sync-alt"></i></a>
+
+        <div *ngIf="download_reports && tableOptions.records.length > 0  && tableOptions.config.downloadReports">
+            <button (click)=" download()" class="btn btn-primary ml-2 "><i class="fas fa-file-download mr-1 "></i>Export</button>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,96 @@
+/* --banner css-- */
+.banner {
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  background-size: contain;
+  background: linear-gradient(180deg, $primary-color, $secendary-color);
+
+  @include breakpoint("tablet", min) {
+    background-position: left ;
+  }
+  @include breakpoint("desktop", min) {
+    background-position: top right;
+
+  }
+
+  .banner-text {
+    .banner-heading {
+      .heading {
+        color: $white;
+        font-weight: 800;
+        margin: 10px 0 20px;
+        font-size: 25px;
+        letter-spacing: 1.05px;
+
+        @include breakpoint("tablet", min) {
+          font-size: 28px;
+        }
+
+        @include breakpoint("desktop", min) {
+
+          font-size: 32px;
+
+        }
+
+        @include breakpoint("desktop-wide", min) {
+
+          font-size: 40px;
+        }
+
+        @include breakpoint("desktop-xxl", min) {
+
+          font-size: 48px;
+        }
+      }
+      p {
+        font-weight: 500;
+        color: $white;
+        font-size: 13px;
+
+
+        @include breakpoint("tablet", min) {
+          padding-right: 11rem;
+        }
+        @include breakpoint("desktop", min) {
+          font-size: 15px;
+        }
+
+      }
+      span {
+        color: $white;
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+  }
+  &:after{
+    content: '';
+    background: url('../../../assets/images/fingerprint-icon.png');
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background-repeat: no-repeat;
+    bottom: 0;
+    left: -20px;
+    background-size: cover;
+    opacity: 0.6;
+  }
+  &:before{
+    content: '';
+    background: url(assets/images/login-bg.png);
+    position: absolute;
+    width: calc(100% - 100px);
+    height: 100%;
+    background-repeat: no-repeat;
+    bottom: 0;
+    background-size: cover;
+    right: 0;
+  }
+  .auth-wrap {
+    height: 100%;
+    z-index: 1;
+  }
+}
+
+

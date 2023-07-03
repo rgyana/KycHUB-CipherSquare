@@ -1,0 +1,45 @@
+<div class="tab-pane">
+  <form [formGroup]="contactDetailGroup">
+    <div class="kyc-box">
+      <h5 class="kyc-heading pb-4">Contact Details</h5>
+      <div class="form-row w-75">
+
+        <!-- Business Name -->
+        <div class="col-12 col-lg-12">
+          <div class="form-group d-flex align-items-center mb-4">
+            <label class="w-50 mb-0" for="">Name of your Business<span class="text-danger star">*</span></label>
+            <input class="form-control" formControlName="businessName" type="text" name="uName"
+              placeholder="Enter Your Name" disable />
+          </div>
+        </div>
+        <!-- Business Name Ends -->
+
+        <!-- Business Email ID -->
+        <div class="col-12 col-lg-12">
+          <div class="form-group d-flex align-items-center mb-4">
+            <label class="w-50 mb-0">Business Email ID<span class="text-danger star">*</span></label>
+            <input class="form-control" formControlName="businessMail" type="text" name="uName"
+              placeholder="Enter Phone Number" disable />
+          </div>
+        </div>
+        <!-- Business Email ID Ends -->
+
+        <!-- Modile Number -->
+        <div class="col-12 col-lg-12">
+          <div class="form-group d-flex align-items-center mb-4">
+            <label class="w-50 mb-0">Mobile Number<span class="text-danger star">*</span></label>
+            <input class="form-control" formControlName="contactNumber" type="text" name="uName"
+              placeholder="Enter Phone Number" disable />
+          </div>
+        </div>
+        <!-- Mobile Number Ends -->
+
+        <div class="col-12 d-flex justify-content-end">
+          <button type="button" class="btn btn-outline-primary w-25">Cancel</button>
+          <button type="button" class="btn btn-primary w-25" (click)="openModalForVerify()">Verify</button>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>

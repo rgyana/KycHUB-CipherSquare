@@ -1,0 +1,153 @@
+.sign-up-form {
+  border-radius: 24px;
+  width: 100%;
+  max-width: 520px;
+  min-height: 400px;
+  overflow: hidden;
+  background: url(../../../assets/images/bg-form.png) no-repeat;
+  background-position: bottom;
+  background-color: $white;
+  box-shadow: 0px 0px 10px #00000030;
+
+  .form-logo-bg {
+    background: transparent linear-gradient(180deg, $primary-color 0%, $secendary-color 100%) 0% 0% no-repeat padding-box;
+    align-items: center;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+
+    img {
+      height: 40px;
+      margin: 20px 0;
+    }
+  }
+
+  h2 {
+    color: $black;
+    font-size: 22px;
+    font-weight: 700;
+
+    @include breakpoint('desktop-small', min) {
+      font-size: 27px;
+    }
+
+    @include breakpoint('desktop-wide', min) {
+      font-size: 32px;
+    }
+  }
+
+  span {
+    color: $btn-grad-primary;
+  }
+
+  .title {
+    h5 {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: 500;
+      color: $black;
+
+      span {
+        font-weight: 600;
+      }
+    }
+
+    p {
+      font-size: 12px;
+      color: #585858;
+    }
+  }
+
+  .otp {
+    box-shadow: 0px 10px 20px #0000001A;
+    border: 2px solid $btn-grad-primary;
+    border-radius: 8px;
+    width: 57px;
+    height: 56px;
+    margin: 0 6px;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .resend {
+    font-style: italic;
+    font-size: 14px;
+    color: var(--blue);
+    text-decoration: underline;
+  }
+}
+
+.sign-up-form h2 span {
+  color: $btn-grad-secondary;
+}
+
+
+
+.sign-up-form .title h5 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.sign-up-form .title h3 {
+  font-size: 20px;
+  font-weight: 500;
+  color: $black;
+}
+
+.sign-up-form .title h3 span {
+  font-weight: 600;
+}
+
+.sign-up-form .title p {
+  font-size: 12px;
+  color: #585858;
+}
+
+.sign-up-form .otp {
+  box-shadow: 0px 10px 20px #0000001A;
+  border: 2px solid $btn-grad-secondary;
+  border-radius: 8px;
+  width: 57px;
+  height: 56px;
+  margin: 0 6px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.sign-up-form .resend {
+  font-style: italic;
+  font-size: 14px;
+  color: var(--blue);
+  text-decoration: underline;
+}
+.auth-pages{
+  height: 100vh;
+
+
+}
+
+
+.create-ac {
+  color: $btn-grad-secondary;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+
+  @include breakpoint("desktop-wide", min) {
+    font-size: 16px;
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: $btn-grad-secondary;
+  }
+}
+
+.registered {
+  font-size: 14px;
+  color: $black;
+  font-weight: 500;
+}

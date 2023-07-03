@@ -1,0 +1,78 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content" style="width: 60rem!Important">
+      <div class="modal-header">
+        <h5 class="modal-title">Service</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-3">Service Name</div>
+          <div class="col-md-3">Charges</div>
+        
+          <div class="col-md-3" >Status</div>
+          <div class="col-md-3" *ngIf="userType.userdata.usertype == 1 || userType.userdata.usertype == 2 ">Service</div>
+
+
+        </div>
+        <div class="row" *ngFor="let item of data.service_id ;let i = index">
+          <div class=" col-md-3">
+            <label> {{item?.name}} </label>
+         
+          </div>
+          <div class="col-md-3">
+            <label *ngIf="userType.userdata.usertype !=1 && userType.userdata.usertype !=2 "><span id="{{'chg'+item?.id}}">{{item?.charge}}</span></label>
+            <input *ngIf="userType.userdata.usertype !=4 " type="text" class="form-control" (keyup)="updateData($event,item)" [value]="item?.charge" >
+          </div>
+
+         
+
+          <div class=" col-md-3" >
+            <div class="input_wrapper">
+              <input type="checkbox" class="switch_4" [checked]="item?.requeststatus" (change)="toggleStatus(item)">
+              <svg class="is_checked" viewBox="0 0 426.67 426.67">
+                <path
+                  d="M153.504 366.84c-8.657 0-17.323-3.303-23.927-9.912L9.914 237.265c-13.218-13.218-13.218-34.645 0-47.863 13.218-13.218 34.645-13.218 47.863 0l95.727 95.727 215.39-215.387c13.218-13.214 34.65-13.218 47.86 0 13.22 13.218 13.22 34.65 0 47.863L177.435 356.928c-6.61 6.605-15.27 9.91-23.932 9.91z" />
+              </svg>
+              <svg class="is_unchecked" viewBox="0 0 212.982 212.982">
+                <path
+                  d="M131.804 106.49l75.936-75.935c6.99-6.99 6.99-18.323 0-25.312-6.99-6.99-18.322-6.99-25.312 0L106.49 81.18 30.555 5.242c-6.99-6.99-18.322-6.99-25.312 0-6.99 6.99-6.99 18.323 0 25.312L81.18 106.49 5.24 182.427c-6.99 6.99-6.99 18.323 0 25.312 6.99 6.99 18.322 6.99 25.312 0L106.49 131.8l75.938 75.937c6.99 6.99 18.322 6.99 25.312 0 6.99-6.99 6.99-18.323 0-25.313l-75.936-75.936z"
+                  fill-rule="evenodd" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
+
+          <div class=" col-md-2" *ngIf="userType?.userdata?.usertype == 1 || userType.userdata.usertype == 2 ">
+
+            <ng-container *ngFor="let itemPack of item?.package| keyvalue">
+              <input [disabled]="!item?.requeststatus" type="radio" name="{{i}}_charge"
+                [checked]="+item.serverstatus == getPackVal(itemPack.value,'value')? true: false"
+                [value]="getPackVal(itemPack.value,'value')"
+                (change)="item.serverstatus = getPackVal(itemPack.value,'value')">{{itemPack.key}}
+            </ng-container>
+          </div>
+
+        </div>
+        <label>Status:</label>
+        <span
+          [ngClass]="{'text-danger': data.status =='Rejected', 'text-warning': data.status =='Pending','text-primary': data.status =='Active' }">{{data.status}}
+        </span>
+
+        <!-- <div>
+          <label>Remark: {{data.remarks}}</label>
+          <input type="text" class="form-control " id="name" [(ngModel)]="remark">
+        </div> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="Update()"
+          data-dismiss="modal">Update</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,23 @@
+.btn {
+    box-shadow: none !important;
+    outline: none !important;
+    font-size: 18px;
+    font-weight: $font-weight-semibold;
+
+    &.btn-primary{
+      background-color: #F91D2F;
+      border-color: #F91D2F;
+      &:hover{
+        background-color: transparent;
+        color: #F91D2F;
+      }
+    }
+    &.btn-outline-primary{
+      border-color: #F91D2F;
+      color: #F91D2F;
+      &:hover{
+        background-color: #F91D2F;
+        color: $white;
+      }
+    }
+}

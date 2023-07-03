@@ -1,0 +1,52 @@
+<div class="container height-150 d-flex justify-content-center align-items-center">
+    <div class="position-absolute">
+        <div class="card  text-center p-5">
+            <div class="card-heading text-center mb-4">
+                <h6>OTP Verification</h6>
+            </div>
+            <p>Please enter the one time password to verify your account</p>
+            <p> <small>A code has been sent to your registered phone number and emial id</small></p>
+
+            <form [formGroup]="verifyOtpInputForm" (ngSubmit)="verifyOtp()">
+
+                <h6>Enter Email OTP</h6>
+                <div class="inputs d-flex flex-row justify-content-center mr-5 ml-5 mb-2">
+                    <input class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1"
+                        (keyup)="focusNext($event)" formControlName="input1" />
+                    <input class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1"
+                        (keyup)="focusNext($event)" formControlName="input2" />
+                    <input class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1"
+                        (keyup)="focusNext($event)" formControlName="input3" />
+                    <input class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1"
+                        (keyup)="focusNext($event)" formControlName="input4" />
+                </div>
+
+                <h6>Enter Email OTP</h6>
+                <div class="inputs d-flex flex-row justify-content-center mr-5 ml-5">
+
+                    <input class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1"
+                        (keyup)="focusNext($event)" formControlName="input5" />
+                    <input class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1"
+                        (keyup)="focusNext($event)" formControlName="input6" />
+                    <input class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1"
+                        (keyup)="focusNext($event)" formControlName="input7" />
+                    <input class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1"
+                        (keyup)="focusNext($event)" formControlName="input8" />
+                </div>
+
+                <div class="mt-2"> <button class="btn btn-success px-4 validate" type="submit">Verify
+                        OTP</button>
+                    <small class="text-danger" *ngIf="verifyOtpInputForm.value.errors">Input is invalid</small>
+                </div>
+
+            </form>
+
+            <!-- <div class="card-2">
+                <div class="content d-flex justify-content-center align-items-center"> <span>Didn't get the code</span>
+                    <a type="submit" class="ms-3" (click)="resendOtp()">Resend</a>
+                </div>
+            </div> -->
+        </div>
+
+    </div>
+</div>

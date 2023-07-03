@@ -1,0 +1,90 @@
+// -------------font-family-------------
+
+$primary-font-family:  'Roboto', sans-serif;
+$secendary-font:'Montserrat', sans-serif;
+// ------------font-weight-------------
+
+$font-weight-light: 300;        
+$font-weight-normal: 400;
+$font-weight-bold: 500;
+$font-weight-semibold: 600;
+$font-weight-bolder: 700;
+$font-weight-tobolder: 800;
+
+// -------------gradients-----------
+
+
+// -------------color-----------
+$primary-color: #101F33;
+$lighter-primary: #0077AC;
+$white: #fff;
+$black: #000;
+$base-color:#F91D2F;
+$danger: #F90032;
+$secendary-color: #33AB51;
+$gray-color: #8C8C8C;
+$input-border: #D9D9D9;
+$input-txt:#5F5F5F;
+$para-text:#343434;
+$small-color: #262626;
+$body-color:#F5F5F5;
+$table-color: #202020;
+$table-head-blue: #DFF5FF;
+$info-color: #F6B500;
+$border-color: #e8e8e8;
+$placeholder-color: #c9c9c9;
+$serach-btn:#F91D2F;
+$otp-green:#40C213;
+$modal-border-color: #eaeaea;
+$comlaint-border-color: #d2d2d2;
+$heading-color: #034B6B;
+$heading-secondary-color: #1a1a1a;
+$text-greyish:#182537;
+$light-white:#F2F2F2;
+$light-greye:#CCCCCC;
+$sidebar:#11133E;
+$sidebar-menuhover:#595a78;
+// -------------buttons-----------
+
+$btn-success: #33AB51;
+$btn-color: #e34400;
+$btn-gradient:linear-gradient(180deg, #F91D2F 0%, #B02A30 100%);
+$menu-gradient:linear-gradient(91.77deg, #F91D2F 18.68%, #920814 117.29%);
+
+// ---------------background-colors-------------
+$content-bg: #FBF9FA;
+$bg-primary-color: #101F33;
+$bg-lighter-primary: #0077AC;
+$bg-secendary-color: #33AB51;
+$bg-orange: linear-gradient(90deg, rgba(254,149,81,1) 0%, rgba(226,40,44,1) 100%);
+$bg-purple: #912DFF;
+$bg-off-white: #F0F0F8;
+$nav-color: #636363;
+$icon-bg-color: #f8f8f8;
+$bg-gray: #f3f3f3;
+$bg-green: #00A859;
+$bg-icon-color: #B7DEEF;
+$bg-head-color: #055070;
+
+// -------------form-color-----------
+$form-border-color: #D4D4D4;
+$form-color: #9A9A9A;
+$form-inner-border: #9A9A9A;
+$search-color: rgb(0 0 0 / 30%);
+$search-border-color: #AAA5A5;
+$date-color: #dbdbdb;
+//----------------box-shadow--------------
+
+$blue-gradient-color: #4B6180;
+$gray-gradient-color: #A2A2A2;
+$service-gradient: rgb(210, 210, 210);
+$bank-gradient-color: #00000045;
+$icon-gradient-color: rgb(0 0 0 / 10%);
+$green-gradient-color: #32AA5159;
+
+//---------------border radius---------------
+$border-radius-input:4px;
+$border-radius-box1: 10px;
+$border-radius-box2: 5px;
+$border-radius-none: 0;
+$border-radius-box3: 12px;

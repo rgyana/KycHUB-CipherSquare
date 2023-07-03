@@ -1,0 +1,185 @@
+<div class="row card flex-row kyc-form">
+  <div class="col-12 col-lg-3 p-0">
+    <div class="h-100">
+      <div class="tabs-section">
+        <h4>KYC Form </h4>
+        <p>Complete and submit the form to enable settlements</p>
+
+        <ul class="nav vtab py-4 pl-3">
+          <!-- Outer Li (means the main/major steps) -->
+          <ng-container *ngFor="let item of KYC_Service_Steps; let i = index; last as isLast">
+
+            <li class="nav-item"
+              [ngClass]="{'active': ((i < 2 && i < kycMaxStepLimit-1)||( i < kycMaxStepLimit-6) ),
+                                'pending':((i <3  && i == kycMaxStepLimit-1) || ((i == 2 ) && (kycMaxStepLimit >=3 && kycMaxStepLimit < 9)) ||(i == 3 && kycMaxStepLimit == 9)),
+                                  'partialActive': item.name == 'Verify Documents' && ((i == 2 ) && (kycMaxStepLimit >=3 && kycMaxStepLimit < 9))}">
+
+              <a class="nav-link pl-0" (click)="onClickOuterLi(item)">
+                <h5 class="mb-0">
+                  <span>{{item.name}}</span>&nbsp;&nbsp;
+                  <span>
+                    <i *ngIf="item.status != 3" class="fal "
+                      [ngClass]="{'fa-check-circle success': item.status == 1,'fa-times-circle reject': item.status == 0,'fa-exclamation-circle pending': item.status == 2}"></i>
+                    <svg *ngIf="item.status == 3" xmlns="http://www.w3.org/2000/svg" width="14.965" height="15"
+                      viewBox="0 0 14.965 15">
+                      <g id="upload" transform="translate(-813.607 -792.845)">
+                        <path id="Path_273792" data-name="Path 273792"
+                          d="M813.62,800.325c0-1.869.031-3.739-.012-5.608a1.685,1.685,0,0,1,1.849-1.855c2.929.008,5.858,0,8.787.006a23.71,23.71,0,0,1,2.925.046,1.529,1.529,0,0,1,1.4,1.642q0,3.75,0,7.5,0,2.036,0,4.072a1.575,1.575,0,0,1-1.681,1.71q-5.786.012-11.573,0a1.57,1.57,0,0,1-1.7-1.727Q813.62,803.218,813.62,800.325Zm13.915.073q0-2.876,0-5.751c0-.6-.131-.736-.733-.736H815.371c-.584,0-.741.157-.741.739q0,5.716,0,11.432c0,.578.157.734.745.734h11.432c.606,0,.729-.125.729-.736Q827.536,803.237,827.535,800.4Z"
+                          transform="translate(0)" fill="#00659e" />
+                        <path id="Path_273793" data-name="Path 273793"
+                          d="M862.5,841.708c0-.917,0-1.834,0-2.751,0-.105.06-.26-.069-.3s-.19.1-.266.178c-.75.768-1.5,1.541-2.246,2.308-.329.336-.41.333-.718.021-.288-.292-.287-.432.016-.737q1.724-1.73,3.451-3.457c.28-.281.4-.283.674-.008q1.739,1.738,3.475,3.481c.127.127.292.255.186.463a.889.889,0,0,1-.512.468c-.156.049-.241-.1-.333-.191q-1.129-1.149-2.252-2.3a2.4,2.4,0,0,0-.2-.188c-.115-.093-.184-.065-.189.087,0,.1,0,.2,0,.305q0,2.7,0,5.4c0,.4-.078.488-.458.5-.437.011-.55-.077-.553-.484C862.492,843.564,862.5,842.636,862.5,841.708Z"
+                          transform="translate(-41.914 -40.56)" fill="#00659e" />
+                      </g>
+                    </svg>
+                  </span>
+                </h5>
+              </a>
+
+              <!-- Inner Li (means sub/minor steps) -->
+              <ul class="nav vtab-inner" *ngIf=" item.sub_type.length > 0 ">
+
+                <!-- <li class="nav-item active ml-0 pb-0"><a href="javascript:void(0);" class="nav-link pl-0">
+                    <h5 class="mb-0"><span>Business PAN</span><span class="icon-gap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14.965" height="15" viewBox="0 0 14.965 15"
+                          class="">
+                          <g id="upload" transform="translate(-813.607 -792.845)">
+                            <path id="Path_273792" data-name="Path 273792"
+                              d="M813.62,800.325c0-1.869.031-3.739-.012-5.608a1.685,1.685,0,0,1,1.849-1.855c2.929.008,5.858,0,8.787.006a23.71,23.71,0,0,1,2.925.046,1.529,1.529,0,0,1,1.4,1.642q0,3.75,0,7.5,0,2.036,0,4.072a1.575,1.575,0,0,1-1.681,1.71q-5.786.012-11.573,0a1.57,1.57,0,0,1-1.7-1.727Q813.62,803.218,813.62,800.325Zm13.915.073q0-2.876,0-5.751c0-.6-.131-.736-.733-.736H815.371c-.584,0-.741.157-.741.739q0,5.716,0,11.432c0,.578.157.734.745.734h11.432c.606,0,.729-.125.729-.736Q827.536,803.237,827.535,800.4Z"
+                              transform="translate(0)" fill="#00659e"></path>
+                            <path id="Path_273793" data-name="Path 273793"
+                              d="M862.5,841.708c0-.917,0-1.834,0-2.751,0-.105.06-.26-.069-.3s-.19.1-.266.178c-.75.768-1.5,1.541-2.246,2.308-.329.336-.41.333-.718.021-.288-.292-.287-.432.016-.737q1.724-1.73,3.451-3.457c.28-.281.4-.283.674-.008q1.739,1.738,3.475,3.481c.127.127.292.255.186.463a.889.889,0,0,1-.512.468c-.156.049-.241-.1-.333-.191q-1.129-1.149-2.252-2.3a2.4,2.4,0,0,0-.2-.188c-.115-.093-.184-.065-.189.087,0,.1,0,.2,0,.305q0,2.7,0,5.4c0,.4-.078.488-.458.5-.437.011-.55-.077-.553-.484C862.492,843.564,862.5,842.636,862.5,841.708Z"
+                              transform="translate(-41.914 -40.56)" fill="#00659e"></path>
+                          </g>
+                        </svg>
+                      </span></h5>
+                  </a></li> -->
+
+                <!-- <li class="nav-item ml-0 pb-0"><a href="javascript:void(0);" class="nav-link pl-0">
+                    <h5 class="mb-0"><span>Authorization letter for
+                        Authorised Person</span><span class="icon-gap"><i class="fal fa-exclamation-circle pending"></i>
+                      </span></h5>
+                  </a></li> -->
+
+                <!-- <li class="nav-item ml-0 pb-0"><a href="javascript:void(0);" class="nav-link pl-0">
+                    <h5 class="mb-0"><span>GST Certificate</span><span class="icon-gap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14.965" height="15" viewBox="0 0 14.965 15"
+                          class="">
+                          <g id="upload" transform="translate(-813.607 -792.845)">
+                            <path id="Path_273792" data-name="Path 273792"
+                              d="M813.62,800.325c0-1.869.031-3.739-.012-5.608a1.685,1.685,0,0,1,1.849-1.855c2.929.008,5.858,0,8.787.006a23.71,23.71,0,0,1,2.925.046,1.529,1.529,0,0,1,1.4,1.642q0,3.75,0,7.5,0,2.036,0,4.072a1.575,1.575,0,0,1-1.681,1.71q-5.786.012-11.573,0a1.57,1.57,0,0,1-1.7-1.727Q813.62,803.218,813.62,800.325Zm13.915.073q0-2.876,0-5.751c0-.6-.131-.736-.733-.736H815.371c-.584,0-.741.157-.741.739q0,5.716,0,11.432c0,.578.157.734.745.734h11.432c.606,0,.729-.125.729-.736Q827.536,803.237,827.535,800.4Z"
+                              transform="translate(0)" fill="#00659e"></path>
+                            <path id="Path_273793" data-name="Path 273793"
+                              d="M862.5,841.708c0-.917,0-1.834,0-2.751,0-.105.06-.26-.069-.3s-.19.1-.266.178c-.75.768-1.5,1.541-2.246,2.308-.329.336-.41.333-.718.021-.288-.292-.287-.432.016-.737q1.724-1.73,3.451-3.457c.28-.281.4-.283.674-.008q1.739,1.738,3.475,3.481c.127.127.292.255.186.463a.889.889,0,0,1-.512.468c-.156.049-.241-.1-.333-.191q-1.129-1.149-2.252-2.3a2.4,2.4,0,0,0-.2-.188c-.115-.093-.184-.065-.189.087,0,.1,0,.2,0,.305q0,2.7,0,5.4c0,.4-.078.488-.458.5-.437.011-.55-.077-.553-.484C862.492,843.564,862.5,842.636,862.5,841.708Z"
+                              transform="translate(-41.914 -40.56)" fill="#00659e"></path>
+                          </g>
+                        </svg>
+                      </span></h5>
+                  </a></li> -->
+
+                <!-- <li class="nav-item ml-0 pb-0"><a href="javascript:void(0);" class="nav-link pl-0">
+                    <h5 class="mb-0"><span>Partnership Deed</span><span class="icon-gap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14.965" height="15" viewBox="0 0 14.965 15"
+                          class="">
+                          <g id="upload" transform="translate(-813.607 -792.845)">
+                            <path id="Path_273792" data-name="Path 273792"
+                              d="M813.62,800.325c0-1.869.031-3.739-.012-5.608a1.685,1.685,0,0,1,1.849-1.855c2.929.008,5.858,0,8.787.006a23.71,23.71,0,0,1,2.925.046,1.529,1.529,0,0,1,1.4,1.642q0,3.75,0,7.5,0,2.036,0,4.072a1.575,1.575,0,0,1-1.681,1.71q-5.786.012-11.573,0a1.57,1.57,0,0,1-1.7-1.727Q813.62,803.218,813.62,800.325Zm13.915.073q0-2.876,0-5.751c0-.6-.131-.736-.733-.736H815.371c-.584,0-.741.157-.741.739q0,5.716,0,11.432c0,.578.157.734.745.734h11.432c.606,0,.729-.125.729-.736Q827.536,803.237,827.535,800.4Z"
+                              transform="translate(0)" fill="#00659e"></path>
+                            <path id="Path_273793" data-name="Path 273793"
+                              d="M862.5,841.708c0-.917,0-1.834,0-2.751,0-.105.06-.26-.069-.3s-.19.1-.266.178c-.75.768-1.5,1.541-2.246,2.308-.329.336-.41.333-.718.021-.288-.292-.287-.432.016-.737q1.724-1.73,3.451-3.457c.28-.281.4-.283.674-.008q1.739,1.738,3.475,3.481c.127.127.292.255.186.463a.889.889,0,0,1-.512.468c-.156.049-.241-.1-.333-.191q-1.129-1.149-2.252-2.3a2.4,2.4,0,0,0-.2-.188c-.115-.093-.184-.065-.189.087,0,.1,0,.2,0,.305q0,2.7,0,5.4c0,.4-.078.488-.458.5-.437.011-.55-.077-.553-.484C862.492,843.564,862.5,842.636,862.5,841.708Z"
+                              transform="translate(-41.914 -40.56)" fill="#00659e"></path>
+                          </g>
+                        </svg>
+                      </span></h5>
+                  </a></li> -->
+
+                <!-- <li class="nav-item ml-0 pb-0"><a href="javascript:void(0);" class="nav-link pl-0">
+                    <h5 class="mb-0"><span>KYC for Authorised Signatory</span><span class="icon-gap"><svg
+                          xmlns="http://www.w3.org/2000/svg" width="14.965" height="15" viewBox="0 0 14.965 15">
+                          <g id="upload" transform="translate(-813.607 -792.845)">
+                            <path id="Path_273792" data-name="Path 273792"
+                              d="M813.62,800.325c0-1.869.031-3.739-.012-5.608a1.685,1.685,0,0,1,1.849-1.855c2.929.008,5.858,0,8.787.006a23.71,23.71,0,0,1,2.925.046,1.529,1.529,0,0,1,1.4,1.642q0,3.75,0,7.5,0,2.036,0,4.072a1.575,1.575,0,0,1-1.681,1.71q-5.786.012-11.573,0a1.57,1.57,0,0,1-1.7-1.727Q813.62,803.218,813.62,800.325Zm13.915.073q0-2.876,0-5.751c0-.6-.131-.736-.733-.736H815.371c-.584,0-.741.157-.741.739q0,5.716,0,11.432c0,.578.157.734.745.734h11.432c.606,0,.729-.125.729-.736Q827.536,803.237,827.535,800.4Z"
+                              transform="translate(0)" fill="#00659e"></path>
+                            <path id="Path_273793" data-name="Path 273793"
+                              d="M862.5,841.708c0-.917,0-1.834,0-2.751,0-.105.06-.26-.069-.3s-.19.1-.266.178c-.75.768-1.5,1.541-2.246,2.308-.329.336-.41.333-.718.021-.288-.292-.287-.432.016-.737q1.724-1.73,3.451-3.457c.28-.281.4-.283.674-.008q1.739,1.738,3.475,3.481c.127.127.292.255.186.463a.889.889,0,0,1-.512.468c-.156.049-.241-.1-.333-.191q-1.129-1.149-2.252-2.3a2.4,2.4,0,0,0-.2-.188c-.115-.093-.184-.065-.189.087,0,.1,0,.2,0,.305q0,2.7,0,5.4c0,.4-.078.488-.458.5-.437.011-.55-.077-.553-.484C862.492,843.564,862.5,842.636,862.5,841.708Z"
+                              transform="translate(-41.914 -40.56)" fill="#00659e"></path>
+                          </g>
+                        </svg></span></h5>
+                  </a></li> -->
+
+                <div *ngFor="let value of item.sub_type; let j = index">
+
+                  <li class="nav-item" [ngClass]="{'active': value.status != '3' }">
+
+                    <a class="nav-link pl-0" [ngClass]="{'rejectedLink':value.status == '0'}"
+                      (click)="onClickInnerList(value)" href="javascript:void(0);">
+
+                      <h5 class="mb-0"><span>{{value.name}}</span>
+
+                        <span class="icon-gap">
+                          <i *ngIf="value.status != 3" class="fal "
+                            [ngClass]="{'fa-check-circle success': value.status == 1,'fa-times-circle reject': value.status == 0,'fa-exclamation-circle pending': value.status == 2}"></i>
+                          <svg *ngIf="value.status == 3 || value.status == 4 " xmlns="http://www.w3.org/2000/svg"
+                            width="14.965" height="15" viewBox="0 0 14.965 15">
+                            <g id="upload" transform="translate(-813.607 -792.845)">
+                              <path id="Path_273792" data-name="Path 273792"
+                                d="M813.62,800.325c0-1.869.031-3.739-.012-5.608a1.685,1.685,0,0,1,1.849-1.855c2.929.008,5.858,0,8.787.006a23.71,23.71,0,0,1,2.925.046,1.529,1.529,0,0,1,1.4,1.642q0,3.75,0,7.5,0,2.036,0,4.072a1.575,1.575,0,0,1-1.681,1.71q-5.786.012-11.573,0a1.57,1.57,0,0,1-1.7-1.727Q813.62,803.218,813.62,800.325Zm13.915.073q0-2.876,0-5.751c0-.6-.131-.736-.733-.736H815.371c-.584,0-.741.157-.741.739q0,5.716,0,11.432c0,.578.157.734.745.734h11.432c.606,0,.729-.125.729-.736Q827.536,803.237,827.535,800.4Z"
+                                transform="translate(0)" fill="#00659e" />
+                              <path id="Path_273793" data-name="Path 273793"
+                                d="M862.5,841.708c0-.917,0-1.834,0-2.751,0-.105.06-.26-.069-.3s-.19.1-.266.178c-.75.768-1.5,1.541-2.246,2.308-.329.336-.41.333-.718.021-.288-.292-.287-.432.016-.737q1.724-1.73,3.451-3.457c.28-.281.4-.283.674-.008q1.739,1.738,3.475,3.481c.127.127.292.255.186.463a.889.889,0,0,1-.512.468c-.156.049-.241-.1-.333-.191q-1.129-1.149-2.252-2.3a2.4,2.4,0,0,0-.2-.188c-.115-.093-.184-.065-.189.087,0,.1,0,.2,0,.305q0,2.7,0,5.4c0,.4-.078.488-.458.5-.437.011-.55-.077-.553-.484C862.492,843.564,862.5,842.636,862.5,841.708Z"
+                                transform="translate(-41.914 -40.56)" fill="#00659e" />
+                            </g>
+                          </svg>
+                        </span>
+
+                      </h5>
+
+                    </a>
+                  </li>
+
+                </div>
+
+
+              </ul>
+            </li>
+          </ng-container>
+
+        </ul>
+      </div>
+    </div>
+
+    <!-- <div class="tab-img">
+      <img
+        [src]="selectedkyc == 1 ?'assets/assets/img/contact_detail.png':selectedkyc == 2 ?'assets/assets/img/business_details.png' :(selectedkyc >= 3 && selectedkyc < 9 ) ?'assets/assets/img/verify_document.png':'assets/assets/img/bank_details.png'">
+    </div> -->
+  </div>
+  <div class="col-12 col-lg-9">
+    <div class="tab-content scrollbar p-4" id="style-1">
+      <div class="col-12">
+
+        <!-- <app-contact-detail *ngIf="userDetails?.kyc_step == 1"
+          (selectedService)="onDocumentUpload($event)"></app-contact-detail>
+        <app-business-detail *ngIf="userDetails?.kyc_step == 2"
+          (isSavedBusinessDetail)="onSaveBusinessDetail($event)"></app-business-detail>
+        <app-verify-document *ngIf="userDetails?.kyc_step == 3"></app-verify-document>
+        <app-bank-detail *ngIf="userDetails?.kyc_step == 4"></app-bank-detail> -->
+
+
+        <app-contact-detail *ngIf="selectedkycStep == 1" (selectedServiceContact)="onSaveContactDetails($event)">
+        </app-contact-detail>
+
+        <app-business-detail *ngIf="selectedkycStep == 2" (selectedServiceBusiness)="onSaveBusinessDetail($event)">
+        </app-business-detail>
+
+        <app-verify-document *ngIf="(selectedkycStep >= 3) && (selectedkycStep <= 9)"
+          (kycServiceStepsDataEmitter)="fetchKycServiceStepsData($event)" [selectedkycStep]="selectedkycStep"
+          [kycMaxStepLimit]="kycMaxStepLimit" (selectedServiceVerifyDoc)="onSaveVerifyDoc($event)">
+        </app-verify-document>
+
+        <app-bank-detail *ngIf="selectedkycStep == 10"></app-bank-detail>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

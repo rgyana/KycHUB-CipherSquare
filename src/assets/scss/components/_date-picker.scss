@@ -1,0 +1,43 @@
+
+.theme-red,
+.theme-green {
+  .bs-datepicker-head {
+    background: $primary-gredient;
+  }
+
+  .bs-datepicker-body {
+    table {
+      td {
+        span {
+          text-align: center;
+          &.selected {
+            background: $primary-gredient;
+          }
+        }
+      }
+
+      td.week {
+        span {
+          color: $primary-gredient;
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.bs-datepicker-custom-range {
+  .bs-datepicker-predefined-btns {
+    button {
+      background: $primary-gredient;
+      font-weight: 500;
+      padding: 8px 10px;
+      height: auto;
+      font-size: 14px;
+    }
+  }
+}
+
+.bs-datepicker{
+  font-size: 13px;
+}

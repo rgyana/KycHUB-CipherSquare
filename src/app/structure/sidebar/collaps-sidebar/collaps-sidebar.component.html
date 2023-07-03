@@ -1,0 +1,54 @@
+<li class="menu mb-2" [routerLinkActive]="'active'">
+    <a id="{{sidemenuData.id}}" href="#{{ sidemenuData.id + '_' + dataIntex }}" data-toggle="collapse"
+       aria-expanded="false" class="dropdown-toggle dashboard-nav-item dashboard-nav-dropdown-toggle collapsed">
+        <div class="svg-icons">
+          <i><img src="{{environment}}/assets/img/side-bar/{{sidemenuData.icon}}" style="width: 25px;margin-right: 10px;"></i>
+
+            <span>{{sidemenuData.title}}</span>
+        </div>
+
+        <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-chevron-right"
+            >
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+
+        <!-- <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </div> -->
+    </a>
+
+
+<ul class="submenu recent-submenu mini-recent-submenu  list-unstyled collapse" id="{{sidemenuData.id + '_' + dataIntex}}" [attr.data-parent]="'#' + dataParent">
+  <div class="dashboard-nav-dropdown-menu scrollbar">
+    <ng-container *ngFor="let item of sidemenuData.children; index as i">
+      <li *ngIf="item.type === 'item'" [routerLinkActive]="'active-link'" class="menu">
+        <!-- {{item.url}} -->
+          <a class="dashboard-dropdown-item" *ngIf="!start(item.url)" routerLink="{{ item.url }}"> {{ item.title }} </a>
+          <a class="dashboard-dropdown-item" *ngIf="start(item.url)" href="{{item.url}}" target="_blank"> {{ item.title }} </a>
+      </li>
+      <app-collaps-sidebar *ngIf="item.type === 'collapsable'" [sidemenuData]="item" [dataParent]="sidemenuData.id + '_' + dataIntex"
+      [dataIntex]="i"></app-collaps-sidebar>
+
+  </ng-container>
+  </div>
+
+
+</ul>
+
+</li>

@@ -1,0 +1,140 @@
+.tabs-section {
+  background-color: rgba(#F91D2F, 0.1);
+  border-top-left-radius: 50%;
+  height: 100%;
+  padding: 30px;
+
+  h4 {
+    color: #F91D2F;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+}
+
+.kyc-form {
+  width: calc(100% - 50px);
+  margin: 25px auto;
+}
+
+.vtab li {
+  position: relative;
+  padding-bottom: 50px;
+  margin-left: 50px;
+
+  &:before {
+    content: '';
+    width: 27px;
+    height: 27px;
+    display: block;
+    font-size: 20px;
+    border: 2px solid #D4D4D4;
+    border-radius: 50%;
+    position: absolute;
+    background: #f7f7f7;
+    z-index: 1;
+    left: -50px;
+  }
+
+  &:after {
+    content: "";
+    width: 5px;
+    height: 100%;
+    background: #BDBDBD;
+    position: absolute;
+    left: -38px;
+    z-index: 0;
+    top: 0;
+  }
+
+  &.active {
+    &:before {
+      content: "\f00c";
+      background: #3D9C3C;
+      font-family: "Font Awesome 5 Pro";
+      color: #fff;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #3D9C3C;
+      z-index: 1;
+    }
+
+    &:after {
+      content: "";
+      background: #3D9C3C;
+
+    }
+  }
+
+  &:last-child {
+    &::after {
+      display: none;
+    }
+  }
+
+  &.pending {
+    &:before {
+      background: #3d9c3c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      padding-top: 2px;
+    }
+  }
+}
+
+.vtab-inner {
+  flex-direction: column;
+
+  li {
+    &::before {
+      display: none !important;
+    }
+
+    h5 {
+      font-size: 12px;
+
+      .icon-gap {
+        margin-left: 16px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.vtab>li.active.partialActive .vtab-inner li.active:after,
+.vtab>li.pending.partialActive .vtab-inner li.active:after {
+  background: #3D9C3C;
+  z-index: 1;
+  top: -12px;
+}
+
+.pending {
+  color: #F28203;
+  font-size: 15px;
+}
+
+// .vtab-inner {
+//   flex-direction: column;
+// }
+// .vtab .vtab-inner li h5 {
+//   font-size: 12px;
+// }
+
+// .vtab .vtab-inner li {
+//   padding-bottom: 0;
+// }
+
+// .vtab .vtab-inner li:before {
+//   display: none;
+// }
+// .icon-gap {
+//   margin-left: 16px;
+//   font-size: 16px;
+// }
+// .pending {
+//     color: #F28203;
+//     font-size: 15px;
+// }

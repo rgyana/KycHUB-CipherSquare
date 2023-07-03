@@ -1,0 +1,132 @@
+ <!-- <div class="sign-up-form d-block ml-auto">
+    <div class="form-logo-bg d-flex justify-content-center"><img
+        [src]="brandLogo ? brandLogo :localLogo"></div>
+    <div class="p-3 p-md-4 d-flex justify-content-center flex-column" >
+      <h2>Welcome To <span>{{brandName ? brandName : 'SprintVerify'}}</span></h2>
+        <form class="form-content mt-2 mt-md-4" [formGroup]="signupForm" (ngSubmit)="signUpUser()">
+            <div class="form-group">
+              <label class="pl-3">Name</label>
+              <div class="position-relative">
+                <input type="type" class="form-control" placeholder="Enter Your Name"
+                [ngClass]="{'is-invalid': (s.name.touched || s.name.dirty) && s.name.invalid}"
+                  formControlName="name">
+                <span class="input-group-append">
+                  <img src="assets/images/user-icon.png">
+                </span>
+              </div>
+              <div *ngIf="s['name'].touched && s['name'].invalid" class="alert-error">
+                <div *ngIf="s['name'].errors && s['name'].errors['required']">
+                    <small><strong>name is required.</strong></small>
+                </div>
+                <div *ngIf="s.name.errors.pattern">
+                    <small><strong>Please Enter valid name</strong></small>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+                <label class="pl-3">Email ID</label>
+                <div class="position-relative">
+                  <input type="email" class="form-control" placeholder="Enter Your User ID"
+                  [ngClass]="{'is-invalid':(s.email.touched || s.email.dirty) && s.email.invalid}"
+                    formControlName="email">
+
+                 </div>
+                <div *ngIf="s['email'].touched && s['email'].invalid" class="alert-error">
+                  <div *ngIf="s['email'].errors && s['email'].errors['required']"><small><strong>Email is required.</strong></small></div>
+                  <div *ngIf="s['email'].errors && s['email'].errors['email']">
+                    <small><strong>Please, enter valid email
+                        address.
+                    </strong></small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="pl-3">Phone No.</label>
+                <div class="position-relative">
+                  <input type="type" class="form-control" placeholder="Enter Your phone no."
+                  [ngClass]="{'is-invalid': (s.phone.touched || s.phone.dirty) && s.phone.invalid}"
+                    formControlName="phone">
+
+                 </div>
+                <div *ngIf="s['phone'].touched && s['phone'].invalid" class="alert-error">
+                  <div *ngIf="s['phone'].errors && s['phone'].errors['required']">
+                    <small><strong>phone is required.</strong></small>
+                  </div>
+                  <div *ngIf="s.phone.errors.pattern">
+                         <small><strong>Please enter a valid mobile no.</strong></small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <button type="submit" [disabled]="!signupForm.valid" class="btn btn-primary w-100">Sign up</button>
+              </div>
+              <div class="form-group d-flex justify-content-between mt-4">
+                <span class="registered">If you register already</span>
+                <a class="text-primary" routerLink="../login"><strong>Login here</strong></a>
+              </div>
+        </form>
+    </div>
+</div> -->
+
+
+
+
+<div class="login-right d-flex align-items-center flex-wrap justify-content-center">
+
+  <div class="login-btns">
+      <button type="submit" class="btn active mr-3">Sign Up</button>
+      <button type="submit" class="btn">Login</button>
+  </div>
+  <div class="login-form">
+
+      <form class="custom-login" [formGroup]="signupForm" (ngSubmit)="signUpUser()">
+          <h2 class="mb-5">Sign Up</h2>
+          <div class="form-group position-relative mb-4">
+            <label>Name of your Business<span>*</span></label>
+            <input type="type" class="form-control" placeholder="Enter Your Name"
+            [ngClass]="{'is-invalid': (s.name.touched || s.name.dirty) && s.name.invalid}"
+              formControlName="name">
+            <div class="input-group-prepend">
+              <span class="input-group-text border-0 bg-transparent"><img src="assets/images/buisness.png"></span>
+            </div>
+          </div>
+
+
+          <div class="form-group position-relative mb-4">
+            <label>Business Email ID<span>*</span></label>
+            <input type="email" class="form-control" placeholder="Enter Your User ID"
+                  [ngClass]="{'is-invalid':(s.email.touched || s.email.dirty) && s.email.invalid}"
+                    formControlName="email">
+            <div class="input-group-prepend">
+              <span class="input-group-text border-0 bg-transparent"><img src="assets/images/email.png"></span>
+            </div>
+          </div>
+
+          <div class="form-group position-relative mb-4">
+              <label>Mobile Number<span>*</span></label>
+              <input type="type" class="form-control" placeholder="Enter Your phone no."
+              [ngClass]="{'is-invalid': (s.phone.touched || s.phone.dirty) && s.phone.invalid}"
+                formControlName="phone">
+              <div class="input-group-prepend">
+                <span class="input-group-text border-0 bg-transparent"><img src="assets/images/phone.png"></span>
+              </div>
+            </div>
+
+            <div class="form-group position-relative mb-4">
+              <label>Create Password<span>*</span></label>
+              <input type="password" class="form-control" id="" placeholder="Enter password">
+              <div class="input-group-prepend">
+                <span class="input-group-text border-0 bg-transparent"><img src="assets/images/password.png"></span>
+              </div>
+            </div>
+
+
+            <button type="submit" class="btn login-btn w-100 border-0 mt-5">Sign Up</button>
+            <p class="mt-3">Already  have an account with SprintNXT?<span class="ml-2">Login</span></p>
+        </form>
+  </div>
+</div>
+

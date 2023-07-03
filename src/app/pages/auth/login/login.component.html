@@ -1,0 +1,85 @@
+<!-- <div class="sign-up-form d-block ml-auto">
+  <div class="form-logo-bg d-flex justify-content-center"><img
+      [src]="brandLogo ? brandLogo :localLogo"></div>
+  <div class="p-3 p-md-4 d-flex justify-content-center flex-column">
+    <h2>Welcome To <span>{{brandName ? brandName :'SprintVerify'}}</span></h2>
+    <form class="form-content mt-2 mt-md-4" [formGroup]="LoginForm" (ngSubmit)="loginUser()">
+      <div class="form-group">
+        <label class="pl-3">User ID</label>
+        <div class="position-relative">
+          <input type="email" class="form-control" placeholder="Enter Your User ID"
+            formControlName="email">
+          <span class="input-group-append">
+            <img src="assets/images/user-icon.png">
+          </span>
+        </div>
+        <div *ngIf="f['email'].touched && f['email'].invalid" class="alert-error">
+          <div *ngIf="f['email'].errors && f['email'].errors['required']"><small><strong>Email is required.</strong></small></div>
+          <div *ngIf="f['email'].errors && f['email'].errors['email']"><small><strong>Please, enter valid email
+            address.</strong></small>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="pl-3">Password</label>
+        <div class="position-relative">
+          <input type="password" class="form-control" formControlName="password" name="password"
+            placeholder="Enter your password" autocomplete="new-password">
+          <span class="input-group-append">
+            <img src="assets/images/eye-icon.png">
+          </span>
+        </div>
+        <div *ngIf="f['password'].touched && f['password'].invalid" class="alert-error">
+          <div *ngIf="f['password'].errors && f['password'].errors['required']"><small><strong>password is required.</strong></small>
+          </div>
+        </div>
+      </div>
+      <div class="form-group mt-3 text-right">
+        <label class="forget"><a routerLink="../forget-password">Forgot User ID OR Password</a></label>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary w-100" [disabled]="!LoginForm.valid">Sign in</button>
+      </div>
+      <div class="form-group d-flex justify-content-between mt-4">
+        <span class="registered">Not registered yet?</span>
+        <a routerLink="../sign-up" class="create-ac">Create your Account</a>
+      </div>
+    </form>
+  </div>
+</div> -->
+
+<div class="login-right d-flex align-items-center flex-wrap justify-content-center">
+  <div class="login-btns">
+    <button type="submit" class="btn active mr-3">Sign Up</button>
+    <button type="submit" class="btn">Login</button>
+  </div>
+  <div class="login-form">
+    <form class="custom-login" [formGroup]="LoginForm" (ngSubmit)="loginUser()">
+      <h2 class="mb-5">Login</h2>
+      <div class="form-group position-relative mb-4">
+        <label>Registered Business Email ID<span>*</span></label>
+        <input type="email" class="form-control" placeholder="Enter Your User ID" formControlName="email" />
+        <div class="input-group-prepend">
+          <span class="input-group-text border-0 bg-transparent"><img src="assets/images/email.png" /></span>
+        </div>
+      </div>
+
+      <div class="form-group position-relative mb-4">
+        <label>Password<span>*</span></label>
+        <input type="password" class="form-control" formControlName="password" name="password"
+          placeholder="Enter your password" autocomplete="new-password" />
+        <div class="input-group-prepend">
+          <span class="input-group-text border-0 bg-transparent"><img src="assets/images/password.png" /></span>
+        </div>
+        <p class="text-right"><a href="">Forgot password?</a></p>
+      </div>
+
+      <button type="submit" class="btn login-btn w-100 border-0 mt-5">
+        Login
+      </button>
+      <p class="mt-3">
+        Already have an account with SprintNXT?<span class="ml-2">Sign Up</span>
+      </p>
+    </form>
+  </div>
+</div>

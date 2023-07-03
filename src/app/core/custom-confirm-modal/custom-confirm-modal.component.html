@@ -1,0 +1,22 @@
+<div class="modal-content p-5">
+
+    <!-- Modal Body -->
+    <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+
+        <h1 *ngIf="modalData.heading" class="text-center text-primary mb-3">{{modalData.heading}}</h1>
+
+        <p *ngIf="modalData.content" class="text-center">{{modalData.content}}</p>
+
+
+        <h4 *ngIf="modalData.fileName" class="my-3">File: <span class="font-weight-bold">{{modalData.fileName}}</span>
+        </h4>
+
+
+        <div class="button bar d-flex">
+            <button type="button" class="btn btn-primary mx-2" (click)="onConfirmBtnClick()">Confirm</button>
+            <button type="button" class="btn btn-secondary mx-2" (click)="onCancelBtnClick()">Cancel</button>
+        </div>
+
+    </div>
+
+</div>

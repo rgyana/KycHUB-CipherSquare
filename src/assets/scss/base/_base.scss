@@ -1,0 +1,304 @@
+* {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $primary-font-family;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background-color:$body-color;
+}
+
+
+
+h2 {
+    font-size: 26px;
+
+    @include breakpoint("desktop", min) {
+        font-size: 28px;
+    }
+
+    @include breakpoint("desktop-wide", min) {
+        font-size: 30px;
+    }
+
+    @include breakpoint("desktop-xxl", min) {
+        font-size: 32px;
+    }
+}
+
+h3 {
+    font-size: 23px;
+
+    @include breakpoint("desktop", min) {
+        font-size: 25px;
+    }
+
+    @include breakpoint("desktop-wide", min) {
+        font-size: 27px;
+    }
+
+    @include breakpoint("desktop-xxl", min) {
+        font-size: 29px;
+    }
+}
+
+h4 {
+    font-size: 16px;
+
+    @include breakpoint("desktop", min) {
+        font-size: 20px;
+    }
+
+    @include breakpoint("desktop-wide", min) {
+        font-size: 24px;
+    }
+}
+
+h5 {
+    font-size: 14px;
+    font-weight: $font-weight-semibold;
+    margin: 0;
+
+    @include breakpoint("desktop", min) {
+        font-size: 14px;
+    }
+
+    @include breakpoint("desktop-wide", min) {
+        font-size: 16px;
+    }
+
+    @include breakpoint("desktop-xxl", min) {
+        font-size: 18px;
+    }
+}
+
+h6 {
+    font-size: 13px;
+    // color: $lighter-primary;
+    font-weight: $font-weight-semibold;
+    margin: 0;
+
+    @include breakpoint("desktop", min) {
+        font-size: 14px;
+    }
+
+    @include breakpoint("desktop-wide", min) {
+        font-size: 15px;
+    }
+}
+
+a {
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+p {
+    font-size: 12px;
+
+    @include breakpoint("desktop", min) {
+        font-size: 14px;
+    }
+
+    @include breakpoint("desktop-wide", min) {
+        font-size: 16px;
+    }
+}
+
+small {
+    font-size: 11px;
+    color: $small-color;
+
+    @include breakpoint("desktop-wide", min) {
+        font-size: 13px;
+    }
+}
+
+label {
+    font-size: 13px;
+    font-weight: $font-weight-bold;
+
+    span {
+        color: #FF1010;
+    }
+
+    @include breakpoint ("desktop-wide", min) {
+        font-size: 16px;
+    }
+}
+
+section {
+    position: relative;
+}
+
+
+.error-msg {
+    color: #FF1010;
+}
+
+// ------font-weight--------------
+.font-bold{
+    font-weight: $font-weight-bold;
+}
+.font-light{
+    font-weight: $font-weight-light;
+
+}
+.font-normal{
+    font-weight: $font-weight-normal;
+}
+
+.font-semibold{
+    font-weight: $font-weight-semibold;
+}
+.font-bolder{
+    font-weight: $font-weight-bolder;
+}
+
+// -----------specing-----------------
+
+.py-80 {
+    padding: 40px 0px;
+
+    @include breakpoint('desktop', min) {
+        padding: 80px 0px;
+    }
+}
+
+
+.py-100 {
+    padding: 50px 0px;
+
+    @include breakpoint('desktop', min) {
+        padding: 100px 0px;
+    }
+}
+
+.py-40 {
+    padding: 20px 0px;
+
+    @include breakpoint('desktop', min) {
+        padding: 40px 0px;
+    }
+}
+
+// ----------------text-color------------
+
+.text-black {
+    color: $black;
+}
+
+.text-primary {
+    color: $lighter-primary !important;
+}
+
+.text-danger {
+    color: $danger !important;
+}
+
+.text-secendary {
+    color: $secendary-color !important;
+
+}
+
+// ----------------background-color--------------
+
+.bg-primary {
+    background-color: $lighter-primary !important;
+}
+
+.bg-secendary {
+    background-color: $secendary-color !important;
+}
+
+.bg-off-white {
+    background-color: $input-border;
+}
+
+.bg-light-blue {
+    background-color: $table-head-blue;
+}
+
+.bg-gray {
+    background-color: $gray-color;
+}
+
+// ----------------overlay------------------
+
+
+
+
+.overlay {
+    background-color: rgba($black, 0.7);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.main {
+    position: relative;
+
+}
+
+.card {
+    border-radius: 10px;
+    border: 1px solid #E3E3E3;
+    box-shadow: 0 0 15px 2px #0000001A;
+    .card {
+        border-radius: 5px;
+    }
+
+
+}
+
+
+
+
+.bg-card {
+    background-color: #F8F8F8;
+    max-width: 500px;
+    margin: 50px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 30px;
+
+    .icon-wrap {
+        background-color: $white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        height: 150px;
+        margin-bottom: 50px;
+
+        span {
+            font-size: 100px;
+            color: #C4C4C4;
+        }
+    }
+
+    .content-wrap {
+        text-align: center;
+
+        p {
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 10px 25px;
+        }
+    }
+}
+

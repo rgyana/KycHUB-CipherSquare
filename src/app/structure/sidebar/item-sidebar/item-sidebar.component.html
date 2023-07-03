@@ -1,0 +1,12 @@
+<li #itemLi class="menu mb-2" routerLink={{sidemenuData.url}} [ngClass]="{ menu: !hasParent }">
+  <!-- [routerLinkActive]="'active'" -->
+  <a data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dashboard-nav-item">
+    <div>
+      <!-- {{sidemenuData.url}} -->
+      <i><img src="{{environment}}/assets/img/side-bar/{{sidemenuData.icon}}"
+          style="width: 25px;margin-right: 10px;"></i>
+      <span>{{sidemenuData.title}}</span>
+    </div>
+
+  </a>
+</li>

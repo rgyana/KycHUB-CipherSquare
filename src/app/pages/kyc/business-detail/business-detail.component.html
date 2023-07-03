@@ -1,0 +1,502 @@
+<div class="tab-pane">
+  <form [formGroup]="form">
+    <div class="kyc-box">
+      <div class="kyc-heading pb-4">Business Detail</div>
+
+      <div class="row mt-3">
+
+        <!-- Business Type -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="">Business Type <span class="text-danger star">*</span></label>
+            <select class="form-control" formControlName="business_type_id">
+              <option value="" selected disabled hidden>Select business type</option>
+              <option [value]="item.id" *ngFor="let item of business_type_list$ | async">
+                {{ item.name }}
+              </option>
+            </select>
+            <span class="highlight"></span>
+
+            <!-- business type error message -->
+            <div *ngIf="form.get('business_type_id')?.touched">
+              <small class="text-danger" *ngIf="form.get('business_type_id')?.errors?.['required']">Business Type is
+                required</small>
+            </div>
+            <!-- Business Type error message ends -->
+
+          </div>
+        </div>
+
+        <!-- Business Entity -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="">Business Entity <span class="text-danger star">*</span></label>
+            <select class="form-control" formControlName="business_entity">
+              <option value="" selected disabled hidden>Select business entity</option>
+              <option [value]="item.value" *ngFor="let item of businessEntity">
+                {{ item.name }}
+              </option>
+            </select>
+            <span class="highlight"></span>
+
+            <!-- Business Entity error message -->
+            <div *ngIf="form.get('business_entity')?.touched">
+              <small class="text-danger" *ngIf="form.get('business_entity')?.errors?.['required']">Business Entity is
+                required</small>
+            </div>
+            <!-- Business Entity error message ends -->
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row mt-3">
+
+        <!-- Business Category -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="">Business Category</label>
+            <select class="form-control" formControlName="business_category_id"
+              onclick="this.setAttribute('value', this.value);" value="">
+              <option value="" selected disabled hidden>Select business category</option>
+              <option [value]="item.id" *ngFor="let item of business_category_list$ | async">
+                {{ item.name }}
+              </option>
+            </select>
+            <span class="highlight"></span>
+
+            <!-- Business Category error message -->
+            <div *ngIf="form.get('business_category_id')?.touched">
+              <small class="text-danger" *ngIf="form.get('business_category_id')?.errors?.['required']">Business
+                Category is required</small>
+            </div>
+            <!-- Business Category error message ends -->
+
+          </div>
+        </div>
+
+        <!-- Document Type -->
+        <div class="col-12 col-lg-6" *ngIf="company_id == 3">
+          <div class="form-group">
+            <label class="">Document Type <span class="text-danger star">*</span></label>
+
+            <select class="form-control" formControlName="doctype">
+              <option value="" selected disabled hidden>
+                Select Document Type
+              </option>
+              <option [value]="item.type" *ngFor="let item of documentList" [hidden]="
+                  form.get('business_type_id')?.value == 3
+                    ? !item?.is_show
+                    : !item?.is_trust_show
+                ">
+                {{ item.value }}
+              </option>
+            </select>
+            <span class="highlight"></span>
+
+            <!-- Document Type error message -->
+            <div *ngIf="form.get('doctype')?.touched">
+              <small class="text-danger" *ngIf="form.get('doctype')?.errors?.['required']">Document Type is
+                required</small>
+            </div>
+            <!-- Document Type error message ends -->
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Other Business Category -->
+      <div class="col-12 col-lg-6 pl-0" *ngIf="form.get('business_category_id')?.value == 13">
+        <div class="form-group">
+          <label class="">Other Business Category
+            <span class="text-danger star">*</span></label>
+
+          <input class="form-control" type="text" formControlName="other_sub_category" />
+          <span class="highlight"></span>
+
+          <!-- Other Business Category error message -->
+          <div *ngIf="form.get('business_category_id')?.touched">
+            <small class="text_danger" *ngIf="form.get('business_category_id')?.errors?.['required']">Other business
+              Catergory is required</small>
+          </div>
+          <!-- Other Business Category error message ends -->
+
+        </div>
+      </div>
+
+      <!-- if Doc type is SHOP -->
+      <div class="col-12 col-lg-6 pl-0" *ngIf="
+          form.get('business_type_id')?.value == 3 &&
+          form.get('doctype')?.value == 'SHOP'
+        ">
+        <!-- State -->
+        <div class="form-group">
+          <label class="">Select State <span class="text-danger star">*</span></label>
+          <select class="form-control" formControlName="state_code" onclick="this.setAttribute('value', this.value);"
+            value="">
+            <option value="" required>Select State</option>
+            <option [value]="item.state_code" *ngFor="let item of shopStateList">
+              {{ item.state }}
+            </option>
+          </select>
+          <span class="highlight"></span>
+
+          <!-- State Code error message -->
+          <div *ngIf="form.get('state_code')?.touched">
+            <small class="text-danger" *ngIf="form.get('state_code')?.errors?.['required']">State Code is
+              required</small>
+          </div>
+          <!-- State Code error message ends -->
+
+        </div>
+        <!-- State Code Ends -->
+
+      </div>
+      <!-- Shop Ends -->
+
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-12 col-lg-6">
+
+        <!-- GSTIN Number -->
+        <div class="form-group" *ngIf="form.get('gstn_no')">
+          <label class="">GSTIN No. <span class="text-danger star">*</span></label>
+          <input class="form-control" type="text" formControlName="gstn_no" (change)="onChangeGstn()" appUppercase />
+          <span class="highlight"></span>
+
+          <!-- GSTIN No. error message -->
+          <div *ngIf="form.get('gstn_no')?.touched">
+            <small class="text-danger" *ngIf="form.get('gstn_no')?.errors?.['required']">GSTIN No. is required</small>
+          </div>
+          <!-- GSTIN No. error message ends -->
+
+        </div>
+        <!-- GSTIN Number ends -->
+
+        <!-- Udyog Aadhaar -->
+        <div class="form-group" *ngIf="form.get('udyam_no')">
+          <label class="">Udyog Aadhar <span class="text-danger star">*</span></label>
+          <input class="form-control" type="text" formControlName="udyam_no" (ngModelChange)="onUdyamChange($event)"
+            appUppercase />
+          <span class="highlight"></span>
+
+          <!-- Udyod Aadhaar error massage -->
+          <div *ngIf="form.get('udyam_no')?.touched">
+            <small class="text-danger" *ngIf="form.get('udyam_no')?.errors?.['required']">Udyog Aadhaar is
+              required</small>
+          </div>
+          <!-- Udyog Aadhaar error message ends -->
+
+        </div>
+        <!-- Udyod Aadhaar ends -->
+
+        <!-- Shop Number -->
+        <div class="form-group" *ngIf="form.get('shop_number')">
+          <label class="">Shop Number <span class="text-danger star">*</span></label>
+          <input class="form-control" type="text" formControlName="shop_number" (ngModelChange)="onShopNoChange($event)"
+            appUppercase />
+          <span class="highlight"></span>
+
+          <!-- Shop Number error message -->
+          <div *ngIf="form.get('shop_number')?.touched">
+            <small class="text-danger" *ngIf="form.get('shop_number')?.errors?.['required']">Shop Number is
+              required</small>
+          </div>
+          <!-- Shop Number error message ends -->
+
+        </div>
+        <!-- Shop number ends -->
+
+        <!--        
+        <div class="form-group" *ngIf="form.get('coi')">
+          <label class="">COI <span class="text-danger star">*</span></label>
+          <input class="form-control" type="text" formControlName="coi" appUppercase />
+          <span class="highlight"></span>
+
+         
+          <div *ngIf="form.get('coi')?.touched">
+            <small class="text-danger" *ngIf="form.get('coi')?.errors?.['required']">COI required</small>
+          </div>
+          
+        </div>
+         -->
+
+
+        <!-- Business Name -->
+        <div class="form-group">
+          <label class="">Business Name <span class="text-danger star">*</span></label>
+          <input class="form-control" type="text" formControlName="business_name" placeholder=" " />
+          <span class="highlight"></span>
+
+          <!-- Business Name error message -->
+          <div *ngIf="form.get('business_name')?.touched">
+            <small class="text_danger" *ngIf="form.get('business_name')?.errors?.['required']">Business Name is
+              required</small>
+          </div>
+          <!-- Business Name error message ends -->
+
+        </div>
+        <!-- Business Name ends -->
+
+      </div>
+
+      <!-- Business Description -->
+      <div class="col-12 col-lg-6">
+        <div class="form-group">
+          <label class="">Business Description <span class="text-danger star">*</span></label>
+          <textarea class="floating-textarea form-control" formControlName="description" placeholder=""></textarea>
+          <span class="highlight"></span>
+
+          <!-- Business Description error message -->
+          <div *ngIf="form.get('description')?.touched">
+            <small class="text-danger" *ngIf="form.get('description')?.errors?.['required']">Business Description is
+              required</small>
+          </div>
+          <!-- Business Description error message ends -->
+
+        </div>
+      </div>
+      <!-- Business Description ends -->
+
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-12">
+        <div class="kyc-heading kyc-black pb-4">Website Details</div>
+      </div>
+
+      <!-- Domain Origin -->
+      <div class="col-12 col-lg-6">
+        <div class="form-group">
+          <label class="">Domain Origin <span class="text-danger star">*</span></label>
+          <input class="form-control" type="text" formControlName="domain_origin" />
+          <span class="highlight"></span>
+
+          <!-- Domain Origin error message -->
+          <div *ngIf="form.get('domain_origin')?.touched">
+            <small class="text-danger" *ngIf="form.get('domain_origin')?.errors?.['required']">Domain Origin is
+              required</small>
+          </div>
+          <!-- Domain Origin error message ends -->
+
+        </div>
+      </div>
+      <!-- Domain Origin ends -->
+
+      <!-- Website URL -->
+      <div class="col-12 col-lg-6">
+        <div class="form-group">
+          <label class="">Website URL <span class="text-danger star">*</span></label>
+          <input class="form-control" type="text" formControlName="site_url" />
+          <span class="highlight"></span>
+
+          <!-- Website URL error message -->
+          <div *ngIf="form.get('site_url')?.touched">
+            <small class="text-danger" *ngIf="form.get('site_url')?.errors?.['required']">Website URL is
+              required</small>
+          </div>
+          <!-- Website URL error message ends -->
+
+        </div>
+      </div>
+      <!-- Website URL ends -->
+
+      <!-- <div class="col-12 col-lg-6 help-btn">
+        <a class="document" href="https://www.whois.com/whois/" target="_blank">
+          <button type="button" class="help mx-auto w-100">Help</button>
+        </a>
+      </div> -->
+
+      <div class="col-12 mt-2">
+        <div class="kyc-heading kyc-black pb-4">Address Details</div>
+      </div>
+
+      <!-- Street Number -->
+      <div class="col-12 col-lg-6">
+        <div class="form-group">
+          <label class="">Street No. <span class="text-danger star">*</span></label>
+          <textarea class="form-control" formControlName="address_street_no" placeholder=" "></textarea>
+          <span class="highlight"></span>
+
+          <!-- Street Number error message -->
+          <div *ngIf="form.get('address_street_no')?.touched">
+            <small class="text-danger" *ngIf="form.get('address_street_no')?.errors?.['required']">Street Number is
+              required</small>
+          </div>
+          <!-- Street Number error message ends -->
+
+        </div>
+      </div>
+      <!-- Street Number ends -->
+
+      <!-- PIN Code -->
+      <div class="col-12 col-lg-6">
+        <div class="from-group">
+          <label class="">Pin Code <span class="text-danger star">*</span></label>
+          <input class="form-control" type="text" formControlName="address_pin_code" placeholder=" " />
+          <span class="highlight"></span>
+
+          <!-- PIN Code error message -->
+          <div *ngIf="form.get('address_pin_code')?.touched">
+            <small class="text-danger" *ngIf="form.get('address_pin_code')?.errors?.['required']">PIN Code is
+              required</small>
+          </div>
+          <!-- PIN Code error message ends -->
+
+        </div>
+      </div>
+      <!-- PIN Code ends -->
+
+      <!-- City -->
+      <div class="col-12 col-lg-6">
+        <div class="form-group">
+          <label class="">City <span class="text-danger star">*</span></label>
+          <input class="form-control" type="text" formControlName="address_city_name" />
+          <span class="highlight"></span>
+
+          <!-- City error message -->
+          <div *ngIf="form.get('address_city_name')?.touched">
+            <small class="text-danger" *ngIf="form.get('address_city_name')?.errors?.['required']">City is
+              required</small>
+          </div>
+          <!-- City error message ends -->
+
+        </div>
+      </div>
+      <!-- City ends -->
+
+      <!-- State -->
+      <div class="col-12 col-lg-6">
+        <div class="form-group">
+          <label class="">State <span class="text-danger star">*</span></label>
+          <input class="form-control" type="text" formControlName="address_state_name" />
+          <span class="highlight"></span>
+
+          <!-- State error message -->
+          <div *ngIf="form.get('address_state_name')?.touched">
+            <small class="text-danger" *ngIf="form.get('address_state_name')?.errors?.['required']">State Name is
+              required</small>
+          </div>
+          <!-- State error message -->
+
+        </div>
+      </div>
+      <!-- State ends -->
+
+      <!-- Operational Address Details -->
+      <ng-container *ngIf="!form.get('isOperational_address')?.value">
+        <div class="col-12">
+          <div class="kyc-heading kyc-black pb-4">
+            Operational Address Details
+          </div>
+        </div>
+
+        <!-- Operation Street No. -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="">Street No. <span class="text-danger star">*</span></label>
+            <input class="form-control" type="text" formControlName="operational_street_no" placeholder=" " />
+            <span class="highlight"></span>
+
+            <!-- Operational Street No. error message -->
+            <div *ngIf="form.get('operational_street_no')?.touched">
+              <small class="text-danger" *ngIf="form.get('operational_street_no')?.errors?.['required']">Operational
+                Street No. is
+                required</small>
+            </div>
+            <!-- Operational Street No. error message ends -->
+
+          </div>
+        </div>
+        <!-- Operational Street No. Ends -->
+
+        <!-- Operational PIN Code -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="">Pin Code <span class="text-danger star">*</span></label>
+            <input class="form-control" type="text" formControlName="operational_pin_code" placeholder=" " />
+            <span class="highlight"></span>
+
+            <!-- Operational PIN Code error message -->
+            <div *ngIf="form.get('operational_pin_code')?.touched">
+              <small class="text-danger" *ngIf="form.get('operational_pin_code')?.errors?.['required']">Operational PIN
+                Code is
+                required</small>
+            </div>
+            <!-- Operational PIN Code error message ends -->
+
+          </div>
+        </div>
+        <!-- Operational PIN Code ends -->
+
+        <!-- Operational City Name -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="">City <span class="text-danger star">*</span></label>
+            <input class="form-control" type="text" formControlName="operational_city_name" placeholder=" " />
+            <span class="highlight"></span>
+
+            <!-- Operational City Name error message -->
+            <div *ngIf="form.get('operational_city_name')?.touched">
+              <small class="text-danger" *ngIf="form.get('operational_city_name')?.errors?.['required']">Operational
+                City Name is
+                required</small>
+            </div>
+            <!-- Operational City Name error message -->
+
+          </div>
+        </div>
+        <!-- Operational City Name -->
+
+        <!-- Operational State Name -->
+        <div class="col-12 col-lg-6">
+          <div class="form-group">
+            <label class="">State <span class="text-danger star">*</span></label>
+            <input class="form-control" type="text" formControlName="operational_state_name" placeholder=" " />
+            <span class="highlight"></span>
+
+            <!-- Operational State Name error message -->
+            <div *ngIf="form.get('operational_state_name')?.touched">
+              <small class="text-danger" *ngIf="form.get('operational_state_name')?.errors?.['required']">Operational
+                State Name is
+                required</small>
+            </div>
+            <!-- Operational State Name error message ends -->
+
+          </div>
+        </div>
+        <!-- Operational State Name ends -->
+
+      </ng-container>
+      <!-- Operational Address Details Ends -->
+
+      <!-- Check box for operational address -->
+      <div class="col-12 col-lg-6">
+        <div class="form-group form-check pl-0">
+          <div class="custom-control custom-checkbox checkbox-info">
+            <input type="checkbox" class="custom-control-input" formControlName="isOperational_address" id="sChkbox"
+              name="sChkbox" (change)="onSelectOperationAddress()" />
+            <label class="custom-control-label" for="sChkbox">
+              <strong>Operational Address same as on above</strong><br />
+              <span>Physical Verification may take place at this address.</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <!-- Checkbox for operational address ends -->
+
+      <!-- Save and Next Button -->
+      <div class="col-12 col-lg-6">
+        <button type="button" *ngIf="!isEditBusinessDetail || currentKycStep < 3" class="btn save-btn"
+          [disabled]="form.invalid" (click)="openSubmitConfirmationModal()">
+          Save & Next
+        </button>
+      </div>
+      <!-- Save And Next Button ends -->
+
+    </div>
+  </form>
+</div>

@@ -1,0 +1,190 @@
+.customTblHover tbody tr:hover {
+    transform: translateY(-1px) scale(1.01);
+    background-color: #f1f2f3 !important;
+    transition: all 0.1s ease;
+}
+
+/* .customTbl .customTblFilterHeaderBox {
+    position: sticky;
+    top: 80px;
+    z-index: 1;
+} */
+
+.customTbl thead {
+    position: sticky;
+    top: 0;
+}
+
+
+.customTbl tbody tr td {
+    border-bottom: 1px dashed #cdd8e3;
+}
+
+
+/* ------------------------TABLE TOP ACTION SECTION START-------------------------------- */
+
+.customTblFilterHeaderBox{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 20px;
+    gap: 5px 10px;
+}
+
+.customTblFilterHeaderBox>div {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0;
+    justify-content: center;
+    gap: 10px 5px;
+}
+
+.customTblFilterHeaderBox>div:nth-last-child(1),
+.customTblFilterHeaderBox>div:nth-last-child(2) {
+    margin-right: 0px;
+}
+
+.customTblFilterHeaderBox>div:nth-last-child(1) {
+    margin-left: auto;
+}
+
+.customTblFilterHeaderBox>div:nth-last-child(1)>div span {
+    display: inline-flex;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1px 5px hsla(0, 0%, 0%, 0.15) !important;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.customTblFilterHeaderBox>div>span {
+    margin-right: 10px;
+    color: #080808;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.customTblFilterHeaderBox>div>.form-group {
+    margin-bottom: 0px;
+}
+
+.customTblFilterHeaderBox>div>.form-group select {
+    padding: 0.15rem 0.45rem;
+    max-width: 150px;
+}
+
+@media (max-width: 767px) {
+
+    .customTblFilterHeaderBox>div {
+        flex: auto;
+    }
+
+
+
+    .customTblFilterHeaderBox>div>span {
+        font-size: 14px;
+    }
+
+    .customTblFilterHeaderBox>div>.form-group select {
+        padding: 0.15rem 0.25rem;
+        max-width: 130px;
+        height: 35px;
+      }
+
+}
+
+
+/* ------------------------TABLE TOP ACTION SECTION END-------------------------------- */
+
+
+
+/* ------------------------TABLE SECTION END-------------------------------- */
+
+
+/* ------------------------TABLE PAGINATION SECTION START-------------------------------- */
+
+
+
+.pagerMute {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+}
+
+
+/* ------------------------TABLE PAGINATION SECTION END-------------------------------- */
+
+
+/* ------------------------------------------------- */
+
+
+/* ------------------------TRACK TABLE DESIGN START-------------------------------- */
+
+
+/* ---------------TRACK TABLE DESIGN 1 START(TABLE STRIPE WITH FIRST COLUMN DOT)--------------- */
+
+.customTblBox.tblStripeWithFCD table tr th:first-child,
+.customTblBox.tblStripeWithFCD table tr td:first-child {
+    padding-left: 40px;
+}
+
+
+/* .customTblBox.tblStripeWithFCD table tbody tr td:nth-child(2),
+.customTblBox.tblStripeWithFCD table tbody tr td:nth-child(3) {
+    font-weight: 600;
+} */
+
+.customTblBox.tblStripeWithFCD table tbody tr:nth-child(2n-2) {
+    background-color: hsla(0, 30.3%, 87.1%, 0.24);
+}
+
+.customTblBox.tblStripeWithFCD table tr td:first-child {
+    position: relative;
+}
+
+.customTblBox.tblStripeWithFCD table tr td:first-child::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    bottom: 0;
+    margin: auto;
+}
+
+.customTblBox.tblStripeWithFCD table tbody tr:nth-child(2n-1) td:first-child::after {
+    background-color: #ff6e4f;
+}
+
+.customTblBox.tblStripeWithFCD table tbody tr:nth-child(2n-2) td:first-child::after {
+    background-color: #1de4e4;
+}
+
+.customTblBox.tblStripeWithFCD table tbody tr:hover {
+    background-color: rgb(226, 205, 205);
+    cursor: pointer;
+}
+
+.customTblBox.tblStripeWithFCD table tbody tr:hover td:first-child::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 3px;
+    height: 100%;
+    bottom: 0;
+    margin: auto;
+    background-color: #3123ae;
+}
+
+
+/* ---------------TRACK TABLE DESIGN 1 END--------------- */
+
+
+/* ------------------------TRACK TABLE DESIGN END-------------------------------- */

@@ -1,0 +1,12 @@
+<div class="dtPagination flex-wrap" *ngIf="tableOptions.config.totalPages > 1 && !tableOptions.config.localFilterVal">
+    <a class="next" href="javascript:void(0);" *ngIf="tableOptions.config.totalPages > tableOptions.config.currentPage" (click)="tableOptions.config.totalPages > tableOptions.config.currentPage? _PytCustTblService.dtUpdateByPagination('next',tableOptions) : false">Next</a>
+    <a class="next"  href="javascript:void(0);" *ngIf="tableOptions.config.currentPage > 1" (click)="tableOptions.config.currentPage > 1? _PytCustTblService.dtUpdateByPagination('first',tableOptions) : false">First</a>
+
+
+    <!-- <a href="javascript:void(0);" [ngStyle]="{'font-size': i+1 == tableOptions.config.currentPage? '30px': 'unset'}" *ngFor="let item of [].constructor(tableOptions.config.totalPages); let i = index" (click)="tableOptions.config.currentPage != (i+1)?_PytCustTblService.dtUpdateByPagination(i+1,tableOptions) : false">
+    {{i+1+''}}
+</a> -->
+    <div   appPytCustTblPager [tableOptions]="tableOptionsCopy" [totalPages]="tableOptions.config.totalPages" [currentPage]="tableOptions.config.currentPage"></div>
+    <a class="next"  href="javascript:void(0);" *ngIf="tableOptions.config.currentPage > 1" (click)="tableOptions.config.currentPage > 1? _PytCustTblService.dtUpdateByPagination('back',tableOptions) : false">Previous</a>
+    <a class="last" href="javascript:void(0);" *ngIf="tableOptions.config.totalPages > tableOptions.config.currentPage" (click)="tableOptions.config.totalPages > tableOptions.config.currentPage? _PytCustTblService.dtUpdateByPagination('last',tableOptions) : false">Last</a>
+</div>

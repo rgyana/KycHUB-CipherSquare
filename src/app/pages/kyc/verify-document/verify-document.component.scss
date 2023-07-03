@@ -1,0 +1,38 @@
+p {
+  color: cadetblue;
+}
+
+.drop-zone {
+  height: 200px;
+  border: 3px solid whitesmoke;
+  border-radius: 7px;
+  padding: 20px;
+}
+
+.input-area {
+  color: cadetblue;
+}
+
+.drop-zone.drag-over {
+  background-color: #eee;
+}
+
+.svg-icon {
+  width: 100px;
+  height: 100px;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: rgb(135, 145, 146);
+}
+
+.svg-icon circle {
+  stroke: #4691f6;
+  stroke-width: 1;
+}
+
+.no-zindex {
+  z-index: 0 !important;
+}

@@ -1,0 +1,27 @@
+.welcome-bg {
+    background: $white;
+    border-radius: 18px;
+    min-height: 806px;
+    height: 100%;
+
+    p {
+        font-weight: $font-weight-normal;
+        font-size: 16px;
+        color: $para-text;
+    }
+}
+
+.kyc-btn {
+    background: $serach-btn;
+    border-radius: $border-radius-input;
+    border: 0;
+    color:$white;
+    width: 280px;
+    height: 44px;
+}
+
+h2.content-title {
+    font-weight: $font-weight-semibold;
+    font-size: 24px;
+    color:$serach-btn;
+}

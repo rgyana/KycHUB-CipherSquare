@@ -1,0 +1,322 @@
+.login-sec{background:$white;
+
+&::after.login-sec:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 109px;
+    top: 0;
+    height: 64px;
+    background: url('../../../assets/images/top-red.png') no-repeat;
+    background-size: 100%;
+}}
+
+
+.login-left {
+    background: url('../../../assets/images/login-bg.png') top left no-repeat;
+    background-size: cover;
+    top: 0;
+    bottom: 0;
+    min-height: 100vh;
+    text-align: left;
+    z-index: 10;
+    opacity: 1;
+    position: relative;
+    @extend .flex-align-center;
+    width: 955px;
+}
+
+.login-left-in {
+    @extend .flex-center-column;
+    margin-top: -5rem;
+
+    h1 {
+        font-weight: $font-weight-bold;
+        font-size: 36px;
+        color: $white;
+        margin-top: 4.5rem;
+    }
+
+}
+
+.stepper {
+    margin-left: 6rem;
+
+    .line {
+        border: 1px dashed #EFEFEF;
+        height: 44px;
+    }
+
+    .circle-white {
+        background: $white;
+        width: 22px;
+        height: 22px;
+        @extend .flex-center;
+    }
+
+    .circle-white>svg {
+        width: 12px
+    }
+
+    .lead {
+        font-weight: $font-weight-normal;
+        font-size: 20px;
+        line-height: 23px;
+        color: $white;
+    }
+
+}
+
+.login-btns .btn {
+    border: 1px solid $btn-color;
+    border-radius: 30px;
+    font-weight: $font-weight-tobolder;
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+    width: 120px;
+    color: $btn-color;
+
+    .btn.active {
+        background: $btn-gradient;
+        color: $white;
+    }
+}
+
+.login-right {
+    width: 80%;
+    // height: 100vh;
+
+    .login-form {
+        @extend .flex-center;
+
+        h2 {
+            font-weight: $font-weight-semibold;
+            font-size: 56px;
+            color: $black;
+            text-align: center;
+        }
+    }
+
+    .login-btns {
+        @extend .flex-end;
+        width: 100%;
+    }
+
+}
+
+.custom-login {
+    width: 480px;
+
+    .input-group-prepend {
+        position: absolute;
+        top: 43px;
+        right: 5px;
+    }
+
+    .form-control {
+        height: calc(2.2em + 0.75rem + 2px);
+        border: 1px solid $input-border;
+        border-radius: 4px;
+    }
+
+    .form-group{
+
+        label{color:black;
+            font-weight:$font-weight-normal;
+            font-size: 16px;}
+        p>a{ font-weight:$font-weight-normal;
+            font-size: 12px;
+            color:$gray-color;}
+
+    }
+
+    label>span {
+        color: $danger
+    }
+
+    .login-btn {
+        background: $btn-gradient;
+        border-radius: $border-radius-input;
+        color: $white;
+        font-weight: $font-weight-tobolder;
+        font-size: 20px;
+        line-height: 34px;
+    }
+
+    p {
+        font-weight: $font-weight-normal;
+        font-size: 16px;
+        text-align: center;
+        color: $input-txt;
+
+        span {
+            font-weight: $font-weight-tobolder;
+            font-size: 20px;
+            text-decoration-line: underline;
+            color:$base-color;
+        }
+    }
+
+
+}.login-sec:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 109px;
+    top: 0;
+    height: 64px;
+    background: url('../../../assets/images/top-red.png') no-repeat;
+    background-size: 100%;
+}
+
+.login-left {
+    background: url('../../../assets/images/login-bg.png') top left no-repeat;
+    background-size: inherit;
+    top: 0;
+    bottom: 0;
+    min-height: 100vh;
+    text-align: left;
+    z-index: 10;
+    opacity: 1;
+    position: relative;
+    @extend .flex-align-center;
+    width: 955px;
+}
+
+.login-left-in {
+    @extend .flex-center-column;
+    margin-top: -5rem;
+
+    h1 {
+        font-weight: $font-weight-bold;
+        font-size: 36px;
+        color: $white;
+        margin-top: 4.5rem;
+    }
+
+}
+
+.stepper {
+    margin-left: 6rem;
+
+    .line {
+        border: 1px dashed #EFEFEF;
+        height: 44px;
+    }
+
+    .circle-white {
+        background: $white;
+        width: 22px;
+        height: 22px;
+        @extend .flex-center;
+    }
+
+    .circle-white>svg {
+        width: 12px
+    }
+
+    .lead {
+        font-weight: $font-weight-normal;
+        font-size: 20px;
+        line-height: 23px;
+        color: $white;
+    }
+
+}
+
+.login-btns .btn {
+    border: 1px solid $btn-color;
+    border-radius: 30px;
+    font-weight: $font-weight-tobolder;
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+    width: 120px;
+    color: $btn-color;
+
+    .btn.active {
+        background: $btn-gradient;
+        color: $white;
+    }
+}
+
+.login-right {
+    width: 80%;
+    // height: 100vh;
+
+    .login-form {
+        @extend .flex-center;
+
+        h2 {
+            font-weight: $font-weight-semibold;
+            font-size: 56px;
+            color: $black;
+            text-align: center;
+        }
+    }
+
+    .login-btns {
+        @extend .flex-end;
+        width: 100%;
+    margin-top: 6rem;
+    margin-bottom: 5rem;
+    }
+
+}
+
+.custom-login {
+    width: 480px;
+
+    .input-group-prepend {
+        position: absolute;
+        top: 43px;
+        right: 5px;
+    }
+
+    .form-control {
+        height: calc(2.2em + 0.75rem + 2px);
+        border: 1px solid $input-border;
+        border-radius: 4px;
+    }
+
+    .form-group{
+
+        label{color:black;
+            font-weight:$font-weight-normal;
+            font-size: 16px;}
+        p>a{ font-weight:$font-weight-normal;
+            font-size: 12px;
+            color:$gray-color;}
+
+    }
+
+    label>span {
+        color: $danger
+    }
+
+    .login-btn {
+        background: $btn-gradient;
+        border-radius: $border-radius-input;
+        color: $white;
+        font-weight: $font-weight-tobolder;
+        font-size: 20px;
+        line-height: 34px;
+    }
+
+    p {
+        font-weight: $font-weight-normal;
+        font-size: 16px;
+        text-align: center;
+        color: $input-txt;
+
+        span {
+            font-weight: $font-weight-tobolder;
+            font-size: 20px;
+            text-decoration-line: underline;
+            color:$base-color;
+        }
+    }
+
+
+}
